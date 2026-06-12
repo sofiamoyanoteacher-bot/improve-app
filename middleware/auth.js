@@ -1,0 +1,18 @@
+function requireAuth(req, res, next) {
+  if (!req.session || !req.session.userId) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+  next();
+}
+
+function requireTeacher(req, res, next) {
+  if (!req.session || !req.session.userId) {
+    return res.status(401).json({ error: 'Not authenticated' });
+  }
+  if (req.session.role !== 'teacher') {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
+  next();
+}
+
+module.exports = { requireAuth, requireTeacher };

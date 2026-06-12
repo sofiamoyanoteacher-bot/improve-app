@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The High-Value Professional — Ingles IMPROVE</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cyan: #4cc0f1;
+    --magenta: #ea4fb9;
+    --purple: #b5beea;
+    --black: #0a0a0a;
+    --white: #ffffff;
+    --gray: #737373;
+    --bg: #f8f8fb;
+    --gradient: linear-gradient(135deg, #4cc0f1 0%, #b5beea 50%, #ea4fb9 100%);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Poppins', sans-serif; background: var(--bg); color: var(--black); }
+
+  /* ── LOGIN ── */
+  #login-screen {
+    display: flex; align-items: center; justify-content: center;
+    min-height: 100vh; background: var(--black); position: relative; overflow: hidden;
+  }
+  .orb {
+    position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; pointer-events: none;
+  }
+  .orb-1 { width: 400px; height: 400px; background: var(--cyan); top: -100px; left: -100px; }
+  .orb-2 { width: 350px; height: 350px; background: var(--magenta); bottom: -80px; right: -80px; }
+  .orb-3 { width: 300px; height: 300px; background: var(--purple); top: 40%; left: 50%; transform: translateX(-50%); }
+  .login-card {
+    position: relative; z-index: 1;
+    background: rgba(255,255,255,0.06); backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.12); border-radius: 24px;
+    padding: 48px; width: 420px; max-width: 95vw;
+  }
+  .login-logo { text-align: center; margin-bottom: 32px; }
+  .login-logo svg { width: 48px; height: 48px; }
+  .login-logo .brand { font-size: 22px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .login-logo .sub { font-size: 11px; color: rgba(255,255,255,0.5); letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  .login-card h1 { color: var(--white); font-size: 26px; font-weight: 700; text-align: center; margin-bottom: 8px; }
+  .login-card p.sub { color: rgba(255,255,255,0.5); font-size: 13px; text-align: center; margin-bottom: 32px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; color: rgba(255,255,255,0.6); font-size: 12px; font-weight: 500; margin-bottom: 8px; }
+  .form-group input {
+    width: 100%; padding: 14px 16px; border-radius: 10px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+    color: var(--white); font-family: 'Poppins', sans-serif; font-size: 14px;
+    outline: none; transition: border-color .2s;
+  }
+  .form-group input:focus { border-color: var(--cyan); }
+  .btn-login {
+    width: 100%; padding: 15px; border: none; border-radius: 10px;
+    background: var(--gradient); color: var(--white); font-family: 'Poppins', sans-serif;
+    font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 8px;
+    transition: opacity .2s;
+  }
+  .btn-login:hover { opacity: .9; }
+  .login-error { color: #ff6b6b; font-size: 13px; text-align: center; margin-top: 12px; display: none; }
+
+  /* ── APP LAYOUT ── */
+  #app { display: none; }
+  .sidebar {
+    position: fixed; top: 0; left: 0; width: 260px; height: 100vh;
+    background: var(--black); display: flex; flex-direction: column; z-index: 100; overflow-y: auto;
+  }
+  .sidebar-logo {
+    padding: 28px 24px 20px; display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .sidebar-logo svg { width: 36px; height: 36px; flex-shrink: 0; }
+  .sidebar-logo .brand-name { font-size: 18px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .sidebar-logo .brand-sub { font-size: 10px; color: rgba(255,255,255,0.4); letter-spacing: 1.5px; text-transform: uppercase; }
+  .sidebar-user { padding: 20px 24px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 15px; flex-shrink: 0; }
+  .sidebar-user .user-name { font-size: 13px; font-weight: 600; color: var(--white); }
+  .sidebar-user .user-role { font-size: 11px; color: var(--gray); }
+  .sidebar-nav { flex: 1; padding: 16px 12px; }
+  .nav-item {
+    display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 10px;
+    color: rgba(255,255,255,0.5); font-size: 13px; font-weight: 500; cursor: pointer;
+    transition: all .2s; margin-bottom: 4px; text-decoration: none;
+    border-left: 3px solid transparent;
+  }
+  .nav-item:hover { background: rgba(255,255,255,0.05); color: var(--white); }
+  .nav-item.active { border-left-color: var(--cyan); background: rgba(76,192,241,0.1); color: var(--white); }
+  .nav-item svg { width: 18px; height: 18px; flex-shrink: 0; }
+  .badge {
+    margin-left: auto; background: var(--gradient); color: white;
+    font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px;
+  }
+  .sidebar-bottom { padding: 16px 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .btn-logout {
+    width: 100%; padding: 11px; border-radius: 10px; background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.5);
+    font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer;
+    transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .btn-logout:hover { background: rgba(234,79,185,0.1); border-color: var(--magenta); color: var(--magenta); }
+
+  /* ── MAIN ── */
+  .main { margin-left: 260px; min-height: 100vh; }
+  .topbar {
+    position: sticky; top: 0; z-index: 50; background: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.07); padding: 0 32px;
+    height: 64px; display: flex; align-items: center; justify-content: space-between;
+  }
+  .topbar-title { font-size: 17px; font-weight: 700; }
+  .topbar-right { display: flex; align-items: center; gap: 16px; }
+  .topbar-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--gradient); display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 13px; cursor: pointer; }
+  .icon-btn { width: 36px; height: 36px; border-radius: 50%; background: var(--bg); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--gray); }
+
+  .page { display: none; padding: 32px; }
+  .page.active { display: block; }
+
+  /* ── CARDS & UTILS ── */
+  .card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 24px; }
+  .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 28px; }
+  .stat-card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 20px 24px; }
+  .stat-label { font-size: 12px; color: var(--gray); font-weight: 500; text-transform: uppercase; letter-spacing: .5px; }
+  .stat-value { font-size: 32px; font-weight: 800; margin: 6px 0 2px; }
+  .stat-sub { font-size: 12px; color: var(--gray); }
+  .section-title { font-size: 17px; font-weight: 700; margin-bottom: 16px; }
+
+  /* ── HOME ── */
+  .hero-banner {
+    background: var(--black); border-radius: 16px; padding: 40px 48px; margin-bottom: 28px;
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 24px 24px; position: relative; overflow: hidden;
+  }
+  .hero-banner .hero-label { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; }
+  .hero-banner h2 { font-size: 32px; font-weight: 800; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1.2; margin-bottom: 14px; }
+  .hero-banner p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.7; max-width: 500px; margin-bottom: 24px; }
+  .hero-quote { border-left: 3px solid; border-image: var(--gradient) 1; padding: 16px 20px; background: rgba(255,255,255,0.04); border-radius: 0 10px 10px 0; }
+  .hero-quote p { color: rgba(255,255,255,0.8); font-size: 14px; font-style: italic; line-height: 1.6; }
+  .hero-quote cite { color: var(--gray); font-size: 12px; margin-top: 8px; display: block; }
+
+  .next-modules { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+  .next-card { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 20px; }
+  .next-card-label { font-size: 11px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .next-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; }
+  .progress-bar-wrap { background: var(--bg); border-radius: 4px; height: 6px; overflow: hidden; }
+  .progress-bar { height: 100%; background: var(--gradient); border-radius: 4px; transition: width .5s; }
+
+  /* ── MODULES ── */
+  .filter-pills { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+  .pill {
+    padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer;
+    border: 1.5px solid rgba(0,0,0,0.1); background: var(--white); color: var(--gray);
+    transition: all .2s;
+  }
+  .pill.active { background: var(--gradient); border-color: transparent; color: var(--white); }
+  .module-card {
+    background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px;
+    margin-bottom: 12px; overflow: hidden; transition: box-shadow .2s;
+  }
+  .module-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .module-header { padding: 18px 24px; display: flex; align-items: center; gap: 16px; cursor: pointer; }
+  .mod-number {
+    width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 16px; flex-shrink: 0;
+  }
+  .mod-number.unlocked { background: var(--gradient); color: var(--white); }
+  .mod-number.locked { background: rgba(0,0,0,0.06); color: var(--gray); }
+  .mod-info { flex: 1; min-width: 0; }
+  .mod-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+  .mod-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; }
+  .chip-month { background: rgba(0,0,0,0.05); color: var(--gray); }
+  .chip-video { background: rgba(76,192,241,0.15); color: var(--cyan); }
+  .chip-text { background: rgba(181,190,234,0.25); color: #6b7ab8; }
+  .chip-practice { background: rgba(234,79,185,0.15); color: var(--magenta); }
+  .mod-status { flex-shrink: 0; }
+  .status-badge { font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 20px; }
+  .status-unlocked { background: rgba(76,192,241,0.15); color: var(--cyan); }
+  .status-locked { background: rgba(0,0,0,0.05); color: var(--gray); }
+  .mod-chevron { flex-shrink: 0; color: var(--gray); transition: transform .2s; }
+  .module-card.open .mod-chevron { transform: rotate(180deg); }
+  .module-body { display: none; padding: 0 24px 20px; border-top: 1px solid rgba(0,0,0,0.05); }
+  .module-card.open .module-body { display: block; }
+  .module-body p { font-size: 14px; color: #444; line-height: 1.7; margin: 16px 0 12px; }
+  .module-body .practice-box { background: rgba(234,79,185,0.06); border: 1px solid rgba(234,79,185,0.2); border-radius: 10px; padding: 16px; margin: 12px 0; }
+  .module-body .practice-box strong { font-size: 12px; color: var(--magenta); text-transform: uppercase; letter-spacing: .5px; }
+  .module-body .practice-box p { margin: 8px 0 0; font-size: 13px; color: #555; }
+  .module-actions { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+  .btn-action {
+    padding: 10px 20px; border-radius: 10px; font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 700;
+    cursor: pointer; border: none; transition: opacity .2s;
+  }
+  .btn-gradient { background: var(--gradient); color: white; }
+  .btn-outline { background: transparent; border: 1.5px solid rgba(0,0,0,0.12); color: var(--gray); }
+  .btn-action:hover { opacity: .85; }
+  .mod-video-wrap { margin-top: 16px; border-radius: 10px; overflow: hidden; aspect-ratio: 16/9; }
+  .mod-video-wrap iframe { width: 100%; height: 100%; border: none; }
+  .locked-msg { text-align: center; padding: 24px; color: var(--gray); font-size: 14px; }
+  .locked-msg svg { display: block; margin: 0 auto 10px; opacity: .4; }
+
+  /* ── UPLOAD ── */
+  .upload-zone {
+    border: 2px dashed var(--cyan); border-radius: 16px; padding: 48px 24px; text-align: center;
+    background: rgba(76,192,241,0.03); cursor: pointer; transition: background .2s; margin-bottom: 24px;
+  }
+  .upload-zone:hover, .upload-zone.drag-over { background: rgba(76,192,241,0.08); }
+  .upload-zone .upload-icon { width: 60px; height: 60px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+  .upload-zone h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .upload-zone p { color: var(--gray); font-size: 13px; }
+  .upload-zone a { color: var(--cyan); font-weight: 600; }
+  #file-input { display: none; }
+  .upload-form { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; padding: 28px; margin-bottom: 28px; }
+  .form-row { margin-bottom: 18px; }
+  .form-row label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+  .form-row select, .form-row input[type=text], .form-row textarea {
+    width: 100%; padding: 12px 14px; border: 1.5px solid rgba(0,0,0,0.1); border-radius: 10px;
+    font-family: 'Poppins', sans-serif; font-size: 14px; background: var(--bg); outline: none;
+    transition: border-color .2s;
+  }
+  .form-row select:focus, .form-row input:focus, .form-row textarea:focus { border-color: var(--cyan); }
+  .form-row textarea { resize: vertical; min-height: 90px; }
+  .selected-file { background: rgba(76,192,241,0.08); border: 1px solid rgba(76,192,241,0.3); border-radius: 10px; padding: 12px 16px; font-size: 13px; margin-bottom: 12px; display: none; }
+  .submissions-list { background: var(--white); border: 1px solid rgba(0,0,0,0.07); border-radius: 12px; overflow: hidden; }
+  .submission-row { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .submission-row:last-child { border-bottom: none; }
+  .sub-thumb { width: 56px; height: 40px; background: var(--bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .sub-info { flex: 1; min-width: 0; }
+  .sub-name { font-size: 14px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sub-meta { font-size: 12px; color: var(--gray); margin-top: 2px; }
+  .sub-status { flex-shrink: 0; }
+  .status-pending { background: rgba(234,79,185,0.15); color: var(--magenta); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+  .status-reviewed { background: rgba(76,192,241,0.15); color: var(--cyan); font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+  .sub-feedback { font-size: 12px; color: #555; margin-top: 6px; font-style: italic; padding: 8px 12px; background: var(--bg); border-radius: 8px; }
+
+  /* ── PROGRESS ── */
+  .timeline { padding: 8px 0; }
+  .tl-item { display: flex; gap: 16px; margin-bottom: 8px; }
+  .tl-dot-col { display: flex; flex-direction: column; align-items: center; }
+  .tl-dot { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+  .tl-dot.done { background: var(--gradient); color: white; }
+  .tl-dot.current { background: transparent; border: 2px solid var(--magenta); color: var(--magenta); }
+  .tl-dot.pending { background: rgba(0,0,0,0.06); color: var(--gray); }
+  .tl-line { width: 2px; flex: 1; background: rgba(0,0,0,0.06); margin: 4px 0; }
+  .tl-content { padding-top: 4px; flex: 1; min-width: 0; }
+  .tl-title { font-size: 13px; font-weight: 600; }
+  .tl-sub { font-size: 12px; color: var(--gray); }
+
+  /* ── RESOURCES ── */
+  .resource-row { display: flex; align-items: center; gap: 16px; padding: 16px 24px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+  .resource-row:last-child { border-bottom: none; }
+  .file-type-badge { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; flex-shrink: 0; }
+  .badge-pdf { background: rgba(234,79,185,0.12); color: var(--magenta); }
+  .badge-doc { background: rgba(76,192,241,0.12); color: var(--cyan); }
+  .badge-xls { background: rgba(76,192,185,0.12); color: #2da870; }
+  .resource-name { flex: 1; font-size: 14px; font-weight: 600; }
+  .btn-download {
+    padding: 8px 18px; border-radius: 10px; background: var(--gradient); color: white;
+    font-family: 'Poppins', sans-serif; font-size: 12px; font-weight: 700;
+    border: none; cursor: pointer; text-decoration: none; display: inline-block;
+  }
+
+  /* ── EMPTY ── */
+  .empty-state { text-align: center; padding: 48px 24px; color: var(--gray); }
+  .empty-state svg { opacity: .3; margin-bottom: 16px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── TOAST ── */
+  .toast {
+    position: fixed; bottom: 28px; right: 28px; background: var(--black); color: var(--white);
+    padding: 14px 22px; border-radius: 12px; font-size: 14px; font-weight: 500;
+    z-index: 9999; opacity: 0; transform: translateY(10px); transition: all .3s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: translateY(0); }
+  .toast.success { border-left: 3px solid var(--cyan); }
+  .toast.error { border-left: 3px solid var(--magenta); }
+</style>
+</head>
+<body>
+
+<!-- ── LOGIN ──────────────────────────────── -->
+<div id="login-screen">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="login-card">
+    <div class="login-logo">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" rx="14" fill="url(#lg)"/>
+        <path d="M10 16h28M10 24h20M10 32h24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#4cc0f1"/><stop offset=".5" stop-color="#b5beea"/><stop offset="1" stop-color="#ea4fb9"/>
+        </linearGradient></defs>
+      </svg>
+      <div class="brand">IMPROVE</div>
+      <div class="sub">Ingles IMPROVE Language School</div>
+    </div>
+    <h1>Bienvenido</h1>
+    <p class="sub">Accedé a tu programa de inglés profesional</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="login-email" placeholder="tu@email.com" />
+    </div>
+    <div class="form-group">
+      <label>Contraseña</label>
+      <input type="password" id="login-pass" placeholder="••••••••" />
+    </div>
+    <button class="btn-login" onclick="doLogin()">Ingresar</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- ── APP ───────────────────────────────── -->
+<div id="app">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <rect width="36" height="36" rx="10" fill="url(#slg)"/>
+        <path d="M8 12h20M8 18h14M8 24h17" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        <defs><linearGradient id="slg" x1="0" y1="0" x2="36" y2="36">
+          <stop stop-color="#4cc0f1"/><stop offset=".5" stop-color="#b5beea"/><stop offset="1" stop-color="#ea4fb9"/>
+        </linearGradient></defs>
+      </svg>
+      <div>
+        <div class="brand-name">IMPROVE</div>
+        <div class="brand-sub">Language School</div>
+      </div>
+    </div>
+    <div class="sidebar-user">
+      <div class="avatar" id="sidebar-avatar">--</div>
+      <div>
+        <div class="user-name" id="sidebar-name">...</div>
+        <div class="user-role">High-Value Professional</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-item active" onclick="showPage('home',this)">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h4a1 1 0 001-1v-3h2v3a1 1 0 001 1h4a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+        Inicio
+      </div>
+      <div class="nav-item" onclick="showPage('modules',this)">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg>
+        Módulos del programa
+        <span class="badge" id="modules-badge">24</span>
+      </div>
+      <div class="nav-item" onclick="showPage('upload',this)">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+        Subir prácticas
+        <span class="badge" id="subs-badge">0</span>
+      </div>
+      <div class="nav-item" onclick="showPage('progress',this)">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
+        Mi progreso
+      </div>
+      <div class="nav-item" onclick="showPage('resources',this)">
+        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg>
+        Material de apoyo
+      </div>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="doLogout()">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        Cerrar sesión
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="topbar-title">Inicio</div>
+      <div class="topbar-right">
+        <button class="icon-btn">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+        </button>
+        <div class="topbar-avatar" id="topbar-avatar">--</div>
+      </div>
+    </div>
+
+    <!-- HOME -->
+    <div id="page-home" class="page active">
+      <div class="hero-banner">
+        <div class="hero-label">Ingles IMPROVE — Programa Intensivo</div>
+        <h2>The High-Value<br>Professional</h2>
+        <p>Transformá tu inglés en una ventaja competitiva real. 24 módulos diseñados para ejecutivos, consultores y profesionales de alto rendimiento.</p>
+        <div class="hero-quote">
+          <p>"Your language is your currency. Master it and the world negotiates with you, not around you."</p>
+          <cite>— Ingles IMPROVE</cite>
+        </div>
+      </div>
+      <div class="stats-row" id="home-stats">
+        <div class="stat-card"><div class="stat-label">Clases completadas</div><div class="stat-value" id="stat-done">—</div><div class="stat-sub">de 24 módulos</div></div>
+        <div class="stat-card"><div class="stat-label">Clases restantes</div><div class="stat-value" id="stat-left">—</div><div class="stat-sub">por completar</div></div>
+        <div class="stat-card"><div class="stat-label">Prácticas enviadas</div><div class="stat-value" id="stat-subs">—</div><div class="stat-sub">en total</div></div>
+        <div class="stat-card"><div class="stat-label">Progreso total</div><div class="stat-value" id="stat-pct">—</div><div class="stat-sub">del programa</div></div>
+      </div>
+      <div class="section-title">Próximos módulos</div>
+      <div class="next-modules" id="next-modules"></div>
+    </div>
+
+    <!-- MODULES -->
+    <div id="page-modules" class="page">
+      <div class="filter-pills">
+        <div class="pill active" onclick="filterModules('all',this)">Todos</div>
+        <div class="pill" onclick="filterModules(1,this)">Mes 1 — Foundation</div>
+        <div class="pill" onclick="filterModules(2,this)">Mes 2 — Interview</div>
+        <div class="pill" onclick="filterModules(3,this)">Mes 3 — Neurosales</div>
+      </div>
+      <div id="modules-list"></div>
+    </div>
+
+    <!-- UPLOAD -->
+    <div id="page-upload" class="page">
+      <div class="card" style="margin-bottom:24px">
+        <h3 style="font-size:16px;font-weight:700;margin-bottom:8px">Cómo funciona</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:1.7">Subí tu práctica en video (MP4, MOV, WebM) o en texto para los módulos que lo requieran. Tu profesor revisará la entrega y te dará feedback personalizado.</p>
+      </div>
+      <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
+        <div class="upload-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+        </div>
+        <h3>Arrastrá tu archivo aquí</h3>
+        <p>o hacé click para <a>buscar en tu equipo</a></p>
+        <p style="margin-top:8px;font-size:12px">Máx. 500MB — MP4, MOV, WebM, PDF, DOC</p>
+      </div>
+      <input type="file" id="file-input" onchange="fileSelected(this)">
+      <div class="selected-file" id="selected-file-info"></div>
+      <form class="upload-form" onsubmit="submitPractice(event)">
+        <div class="form-row">
+          <label>Módulo de práctica</label>
+          <select id="upload-module" required>
+            <option value="">Seleccioná un módulo...</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Nombre de la práctica</label>
+          <input type="text" id="upload-name" placeholder="Ej: Elevator pitch — intento 1" required>
+        </div>
+        <div class="form-row">
+          <label>Notas para el profesor (opcional)</label>
+          <textarea id="upload-notes" placeholder="Contale al profe en qué trabajaste o qué dudas tenés..."></textarea>
+        </div>
+        <button type="submit" class="btn-action btn-gradient" style="padding:14px 32px;font-size:14px">Enviar práctica</button>
+      </form>
+      <div class="section-title">Mis prácticas enviadas</div>
+      <div class="submissions-list" id="subs-list">
+        <div class="empty-state"><p>Todavía no enviaste ninguna práctica.</p></div>
+      </div>
+    </div>
+
+    <!-- PROGRESS -->
+    <div id="page-progress" class="page">
+      <div class="stats-row" id="prog-stats">
+        <div class="stat-card"><div class="stat-label">Completados</div><div class="stat-value" id="p-done">—</div><div class="stat-sub">de 24</div></div>
+        <div class="stat-card"><div class="stat-label">Mes actual</div><div class="stat-value" id="p-month">—</div><div class="stat-sub">del programa</div></div>
+        <div class="stat-card"><div class="stat-label">Próxima clase</div><div class="stat-value" id="p-next" style="font-size:16px;line-height:1.3">—</div><div class="stat-sub"></div></div>
+        <div class="stat-card"><div class="stat-label">Prácticas enviadas</div><div class="stat-value" id="p-subs">—</div><div class="stat-sub">en total</div></div>
+      </div>
+      <div class="card">
+        <div class="section-title">Línea de tiempo del programa</div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </div>
+
+    <!-- RESOURCES -->
+    <div id="page-resources" class="page">
+      <div class="card">
+        <div class="section-title">Material de apoyo</div>
+        <div id="resources-list">
+          <div class="empty-state"><p>No hay material disponible todavía.</p></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+let currentUser = null;
+let allModules = [];
+let mySubmissions = [];
+let currentFilter = 'all';
+let selectedFile = null;
+
+// ── INIT ──────────────────────────────────
+async function init() {
+  try {
+    const r = await fetch('/api/me', { credentials: 'include' });
+    if (!r.ok) { showLogin(); return; }
+    currentUser = await r.json();
+    if (currentUser.role === 'teacher') { window.location.href = '/admin'; return; }
+    showApp();
+  } catch { showLogin(); }
+}
+
+function showLogin() {
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+}
+
+async function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  const initials = currentUser.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('sidebar-avatar').textContent = initials;
+  document.getElementById('topbar-avatar').textContent = initials;
+  document.getElementById('sidebar-name').textContent = currentUser.name;
+  await loadAll();
+}
+
+async function loadAll() {
+  await Promise.all([loadModules(), loadSubmissions(), loadResources()]);
+  renderHome();
+}
+
+async function loadModules() {
+  const r = await fetch('/api/modules', { credentials: 'include' });
+  allModules = await r.json();
+  document.getElementById('modules-badge').textContent = allModules.length;
+  renderModules();
+}
+
+async function loadSubmissions() {
+  const r = await fetch('/api/submissions/mine', { credentials: 'include' });
+  mySubmissions = await r.json();
+  document.getElementById('subs-badge').textContent = mySubmissions.length;
+  renderSubmissions();
+  renderUploadSelect();
+}
+
+async function loadResources() {
+  const r = await fetch('/admin/api/resources', { credentials: 'include' });
+  if (!r.ok) return;
+  const res = await r.json();
+  renderResources(res);
+}
+
+// ── LOGIN ──────────────────────────────────
+async function doLogin() {
+  const email = document.getElementById('login-email').value;
+  const pass = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('login-error');
+  errEl.style.display = 'none';
+  try {
+    const r = await fetch('/api/auth/login', {
+      method: 'POST', credentials: 'include',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password: pass })
+    });
+    const data = await r.json();
+    if (!r.ok) { errEl.textContent = data.error; errEl.style.display = 'block'; return; }
+    currentUser = data;
+    if (data.role === 'teacher') { window.location.href = '/admin'; return; }
+    await showApp();
+  } catch(e) { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+}
+
+document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+document.getElementById('login-email').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+
+async function doLogout() {
+  await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+  currentUser = null;
+  showLogin();
+}
+
+// ── NAVIGATION ────────────────────────────
+const pageTitles = { home:'Inicio', modules:'Módulos del programa', upload:'Subir prácticas', progress:'Mi progreso', resources:'Material de apoyo' };
+
+function showPage(name, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('topbar-title').textContent = pageTitles[name];
+  if (name === 'upload') loadSubmissions();
+  if (name === 'resources') loadResources();
+}
+
+// ── HOME ──────────────────────────────────
+function renderHome() {
+  const unlocked = allModules.filter(m => m.is_unlocked);
+  const done = unlocked.length;
+  const left = 24 - done;
+  const pct = Math.round((done / 24) * 100);
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-left').textContent = left;
+  document.getElementById('stat-subs').textContent = mySubmissions.length;
+  document.getElementById('stat-pct').textContent = pct + '%';
+
+  // Next modules
+  const pending = allModules.filter(m => m.is_unlocked);
+  const next3 = pending.slice(-3);
+  const container = document.getElementById('next-modules');
+  container.innerHTML = next3.map(m => `
+    <div class="next-card">
+      <div class="next-card-label">Módulo ${m.number}</div>
+      <h4>${m.title}</h4>
+      <div class="progress-bar-wrap"><div class="progress-bar" style="width:${Math.min(100, (m.number/24)*100)}%"></div></div>
+    </div>
+  `).join('');
+  renderTimeline();
+}
+
+// ── MODULES ──────────────────────────────
+function filterModules(filter, el) {
+  currentFilter = filter;
+  document.querySelectorAll('.filter-pills .pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  renderModules();
+}
+
+function renderModules() {
+  const filtered = currentFilter === 'all' ? allModules : allModules.filter(m => m.month == currentFilter);
+  const container = document.getElementById('modules-list');
+  if (!filtered.length) { container.innerHTML = '<div class="empty-state"><p>No hay módulos en esta categoría.</p></div>'; return; }
+  container.innerHTML = filtered.map(m => buildModuleCard(m)).join('');
+}
+
+function buildModuleCard(m) {
+  const chips = [];
+  if (m.video_url) chips.push('<span class="chip chip-video">▶ Video</span>');
+  chips.push('<span class="chip chip-text">📄 Contenido</span>');
+  if (m.practice_instructions) chips.push('<span class="chip chip-practice">🎯 Práctica</span>');
+
+  const monthLabel = ['','Mes 1 — Foundation','Mes 2 — Interview','Mes 3 — Neurosales'][m.month] || '';
+
+  let body = '';
+  if (m.is_unlocked) {
+    body = `
+      <p>${m.description || ''}</p>
+      ${m.practice_instructions ? `<div class="practice-box"><strong>🎯 Práctica</strong><p>${m.practice_instructions}</p></div>` : ''}
+      ${m.video_url ? `<div class="mod-video-wrap"><iframe src="${toEmbedUrl(m.video_url)}" allowfullscreen></iframe></div>` : ''}
+      ${m.pdf_filename ? `<div style="margin-top:12px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="btn-action btn-outline" style="font-size:12px;padding:8px 16px;display:inline-block;text-decoration:none">📥 Descargar PDF del módulo</a></div>` : ''}
+      <div class="module-actions">
+        ${m.practice_instructions ? `<button class="btn-action btn-gradient" onclick="event.stopPropagation();document.querySelector('.nav-item:nth-child(3)').click();preselectModule(${m.id})">Subir práctica</button>` : ''}
+      </div>
+    `;
+  } else {
+    body = `<div class="locked-msg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Este módulo se desbloquea cuando completés el anterior.</div>`;
+  }
+
+  return `
+    <div class="module-card" id="mc-${m.id}">
+      <div class="module-header" onclick="toggleModule(${m.id})">
+        <div class="mod-number ${m.is_unlocked ? 'unlocked' : 'locked'}">${m.number}</div>
+        <div class="mod-info">
+          <div class="mod-title">${m.title}</div>
+          <div class="mod-meta">
+            <span class="chip chip-month">${monthLabel}</span>
+            ${chips.join('')}
+          </div>
+        </div>
+        <div class="mod-status">
+          <span class="status-badge ${m.is_unlocked ? 'status-unlocked' : 'status-locked'}">${m.is_unlocked ? 'Disponible' : 'Bloqueado'}</span>
+        </div>
+        <svg class="mod-chevron" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </div>
+      <div class="module-body">${body}</div>
+    </div>
+  `;
+}
+
+function toggleModule(id) {
+  const card = document.getElementById('mc-' + id);
+  card.classList.toggle('open');
+}
+
+function toEmbedUrl(url) {
+  if (!url) return '';
+  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/);
+  return m ? `https://www.youtube.com/embed/${m[1]}` : url;
+}
+
+function preselectModule(id) {
+  document.getElementById('upload-module').value = id;
+}
+
+// ── UPLOAD ───────────────────────────────
+const dropZone = document.getElementById('drop-zone');
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); dropZone.classList.remove('drag-over');
+  if (e.dataTransfer.files[0]) setFile(e.dataTransfer.files[0]);
+});
+
+function fileSelected(input) { if (input.files[0]) setFile(input.files[0]); }
+function setFile(file) {
+  selectedFile = file;
+  const info = document.getElementById('selected-file-info');
+  info.style.display = 'block';
+  info.textContent = `📎 ${file.name} (${(file.size/1024/1024).toFixed(1)} MB)`;
+}
+
+function renderUploadSelect() {
+  const sel = document.getElementById('upload-module');
+  const prev = sel.value;
+  const withPractice = allModules.filter(m => m.is_unlocked && m.practice_instructions);
+  sel.innerHTML = '<option value="">Seleccioná un módulo...</option>' +
+    withPractice.map(m => `<option value="${m.id}">Módulo ${m.number} — ${m.title}</option>`).join('');
+  if (prev) sel.value = prev;
+}
+
+async function submitPractice(e) {
+  e.preventDefault();
+  if (!selectedFile) { showToast('Seleccioná un archivo primero', 'error'); return; }
+  const moduleId = document.getElementById('upload-module').value;
+  const notes = document.getElementById('upload-notes').value;
+  if (!moduleId) { showToast('Seleccioná un módulo', 'error'); return; }
+
+  const fd = new FormData();
+  fd.append('video', selectedFile);
+  fd.append('module_id', moduleId);
+  fd.append('notes', notes);
+
+  const btn = e.target.querySelector('button[type=submit]');
+  btn.textContent = 'Subiendo...'; btn.disabled = true;
+
+  try {
+    const r = await fetch('/api/submissions', { method: 'POST', credentials: 'include', body: fd });
+    const data = await r.json();
+    if (!r.ok) { showToast(data.error, 'error'); } else {
+      showToast('Práctica enviada correctamente', 'success');
+      selectedFile = null;
+      document.getElementById('selected-file-info').style.display = 'none';
+      document.getElementById('file-input').value = '';
+      document.getElementById('upload-notes').value = '';
+      await loadSubmissions();
+    }
+  } catch { showToast('Error al subir el archivo', 'error'); }
+  btn.textContent = 'Enviar práctica'; btn.disabled = false;
+}
+
+function renderSubmissions() {
+  const list = document.getElementById('subs-list');
+  if (!mySubmissions.length) {
+    list.innerHTML = '<div class="empty-state"><p>Todavía no enviaste ninguna práctica.</p></div>'; return;
+  }
+  list.innerHTML = mySubmissions.map(s => `
+    <div class="submission-row">
+      <div class="sub-thumb">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+      </div>
+      <div class="sub-info">
+        <div class="sub-name">${s.original_name}</div>
+        <div class="sub-meta">Módulo ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('es-AR')}</div>
+        ${s.feedback ? `<div class="sub-feedback">💬 ${s.feedback}</div>` : ''}
+      </div>
+      <div class="sub-status">
+        <span class="${s.status === 'reviewed' ? 'status-reviewed' : 'status-pending'}">${s.status === 'reviewed' ? '✓ Revisado' : '⏳ Pendiente'}</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── PROGRESS ─────────────────────────────
+function renderTimeline() {
+  const unlocked = allModules.filter(m => m.is_unlocked).length;
+  document.getElementById('p-done').textContent = unlocked;
+  document.getElementById('p-subs').textContent = mySubmissions.length;
+  const currentMod = allModules[unlocked] || allModules[allModules.length-1];
+  document.getElementById('p-month').textContent = `Mes ${currentMod ? currentMod.month : 3}`;
+  document.getElementById('p-next').textContent = currentMod ? currentMod.title : 'Completado';
+
+  const tl = document.getElementById('timeline');
+  tl.innerHTML = allModules.map((m, i) => {
+    const state = m.is_unlocked ? (i < unlocked - 1 ? 'done' : 'current') : 'pending';
+    const isLast = i === allModules.length - 1;
+    return `
+      <div class="tl-item">
+        <div class="tl-dot-col">
+          <div class="tl-dot ${state}">${state === 'done' ? '✓' : m.number}</div>
+          ${!isLast ? '<div class="tl-line"></div>' : ''}
+        </div>
+        <div class="tl-content">
+          <div class="tl-title">${m.title}</div>
+          <div class="tl-sub">Módulo ${m.number} · ${['','Mes 1','Mes 2','Mes 3'][m.month]}</div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ── RESOURCES ────────────────────────────
+function renderResources(list) {
+  const container = document.getElementById('resources-list');
+  if (!list || !list.length) {
+    container.innerHTML = '<div class="empty-state"><p>No hay material disponible todavía.</p></div>'; return;
+  }
+  container.innerHTML = list.map(r => `
+    <div class="resource-row">
+      <div class="file-type-badge badge-${r.file_type.toLowerCase()}">${r.file_type}</div>
+      <div class="resource-name">${r.title}</div>
+      <a href="/resources/${r.filename}" target="_blank" class="btn-download">Descargar</a>
+    </div>
+  `).join('');
+}
+
+// ── TOAST ─────────────────────────────────
+function showToast(msg, type = 'success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+init();
+</script>
+</body>
+</html>
