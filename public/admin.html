@@ -7,228 +7,200 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cyan: #4cc0f1; --magenta: #ea4fb9; --purple: #b5beea;
-    --black: #0a0a0a; --white: #ffffff; --gray: #737373; --bg: #f8f8fb;
-    --gradient: linear-gradient(135deg, #4cc0f1 0%, #b5beea 50%, #ea4fb9 100%);
+    --cyan:#4cc0f1; --magenta:#ea4fb9; --purple:#b5beea;
+    --black:#0a0a0a; --white:#ffffff; --gray:#737373; --bg:#f8f8fb;
+    --gradient:linear-gradient(135deg,#4cc0f1 0%,#b5beea 50%,#ea4fb9 100%);
+    --sidebar-w:270px;
   }
-  :root { --sidebar-w: 260px; }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:'Poppins',sans-serif; background:var(--bg); color:var(--black); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--black);}
 
-  /* ── LOGIN ── */
-  #login-screen {
-    display:flex; align-items:center; justify-content:center;
-    min-height:100vh; background:var(--black); position:relative; overflow:hidden;
-  }
-  .orb { position:absolute; border-radius:50%; filter:blur(80px); opacity:.5; pointer-events:none; }
-  .orb-1 { width:400px; height:400px; background:var(--cyan); top:-100px; left:-100px; }
-  .orb-2 { width:350px; height:350px; background:var(--magenta); bottom:-80px; right:-80px; }
-  .orb-3 { width:300px; height:300px; background:var(--purple); top:40%; left:50%; transform:translateX(-50%); }
-  .login-card {
-    position:relative; z-index:1;
-    background:rgba(255,255,255,0.06); backdrop-filter:blur(20px);
-    border:1px solid rgba(255,255,255,0.12); border-radius:24px;
-    padding:48px; width:420px; max-width:95vw;
-  }
-  .login-logo { text-align:center; margin-bottom:32px; }
-  .login-logo .brand { font-size:22px; font-weight:800; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .login-logo .sub { font-size:11px; color:rgba(255,255,255,.5); letter-spacing:2px; text-transform:uppercase; margin-top:4px; }
-  .login-logo .admin-tag { display:inline-block; margin-top:10px; padding:4px 14px; background:rgba(234,79,185,.15); border:1px solid rgba(234,79,185,.3); border-radius:20px; font-size:11px; font-weight:700; color:var(--magenta); }
-  .login-card h1 { color:var(--white); font-size:26px; font-weight:700; text-align:center; margin-bottom:8px; }
-  .login-card p.sub { color:rgba(255,255,255,.5); font-size:13px; text-align:center; margin-bottom:32px; }
-  .form-group { margin-bottom:16px; }
-  .form-group label { display:block; color:rgba(255,255,255,.6); font-size:12px; font-weight:500; margin-bottom:8px; }
-  .form-group input {
-    width:100%; padding:14px 16px; border-radius:10px;
-    background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.12);
-    color:var(--white); font-family:'Poppins',sans-serif; font-size:14px; outline:none; transition:border-color .2s;
-  }
-  .form-group input:focus { border-color:var(--cyan); }
-  .btn-login {
-    width:100%; padding:15px; border:none; border-radius:10px;
-    background:var(--gradient); color:var(--white); font-family:'Poppins',sans-serif;
-    font-size:15px; font-weight:700; cursor:pointer; margin-top:8px;
-  }
-  .login-error { color:#ff6b6b; font-size:13px; text-align:center; margin-top:12px; display:none; }
+  /* LOGIN */
+  #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--black);position:relative;overflow:hidden;}
+  .orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;pointer-events:none;}
+  .orb-1{width:400px;height:400px;background:var(--cyan);top:-100px;left:-100px;}
+  .orb-2{width:350px;height:350px;background:var(--magenta);bottom:-80px;right:-80px;}
+  .orb-3{width:300px;height:300px;background:var(--purple);top:40%;left:50%;transform:translateX(-50%);}
+  .login-card{position:relative;z-index:1;background:rgba(255,255,255,.06);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:24px;padding:48px;width:420px;max-width:95vw;}
+  .login-logo{text-align:center;margin-bottom:28px;}
+  .login-logo .admin-tag{display:inline-block;margin-top:10px;padding:4px 14px;background:rgba(234,79,185,.15);border:1px solid rgba(234,79,185,.3);border-radius:20px;font-size:11px;font-weight:700;color:var(--magenta);}
+  .login-card h1{color:var(--white);font-size:26px;font-weight:700;text-align:center;margin-bottom:8px;}
+  .login-card p.sub{color:rgba(255,255,255,.5);font-size:13px;text-align:center;margin-bottom:28px;}
+  .form-group{margin-bottom:16px;}
+  .form-group label{display:block;color:rgba(255,255,255,.6);font-size:12px;font-weight:500;margin-bottom:8px;}
+  .form-group input{width:100%;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--white);font-family:'Poppins',sans-serif;font-size:14px;outline:none;}
+  .form-group input:focus{border-color:var(--cyan);}
+  .btn-login{width:100%;padding:15px;border:none;border-radius:10px;background:var(--gradient);color:white;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;}
+  .login-error{color:#ff8888;font-size:13px;text-align:center;margin-top:12px;display:none;}
 
-  /* ── LAYOUT ── */
-  #app { display:none; }
-  .sidebar {
-    position:fixed; top:0; left:0; width:var(--sidebar-w); height:100vh;
-    background:rgba(10,10,10,0.97); backdrop-filter:blur(20px);
-    border-right:1px solid rgba(255,255,255,0.06);
-    display:flex; flex-direction:column; z-index:200; overflow-y:auto;
-    transition:transform 0.3s ease;
-  }
-  .sidebar.collapsed { transform:translateX(-100%); }
-  .sidebar-logo { padding:28px 24px 20px; display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(255,255,255,.06); }
-  .sidebar-logo .brand-name { font-size:18px; font-weight:800; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  .sidebar-logo .brand-sub { font-size:10px; color:rgba(255,255,255,.4); letter-spacing:1.5px; text-transform:uppercase; }
-  .sidebar-logo .admin-badge { font-size:10px; font-weight:700; color:var(--magenta); background:rgba(234,79,185,.12); padding:3px 10px; border-radius:20px; margin-top:4px; display:inline-block; }
-  .sidebar-user { padding:16px 20px; border-bottom:1px solid rgba(255,255,255,.06); }
-  .sidebar-user-btn {
-    display:flex; align-items:center; gap:12px; width:100%;
-    background:none; border:none; cursor:pointer; padding:8px 10px; border-radius:10px;
-    transition:background .2s; text-align:left;
-  }
-  .sidebar-user-btn:hover { background:rgba(255,255,255,.06); }
-  .avatar { width:42px; height:42px; border-radius:50%; background:var(--gradient); display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:15px; flex-shrink:0; overflow:hidden; }
-  .avatar img { width:100%; height:100%; object-fit:cover; }
-  .user-name { font-size:13px; font-weight:600; color:var(--white); }
-  .user-role { font-size:11px; color:var(--gray); }
-  .user-edit-hint { font-size:10px; color:var(--cyan); margin-top:2px; opacity:.7; }
-  .sidebar-nav { flex:1; padding:16px 12px; }
-  .nav-item {
-    display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:10px;
-    color:rgba(255,255,255,.5); font-size:13px; font-weight:500; cursor:pointer;
-    transition:all .2s; margin-bottom:4px; border-left:3px solid transparent;
-  }
-  .nav-item:hover { background:rgba(255,255,255,.05); color:var(--white); }
-  .nav-item.active { border-left-color:var(--cyan); background:rgba(76,192,241,.1); color:var(--white); }
-  .nav-item svg { width:18px; height:18px; flex-shrink:0; }
-  .sidebar-bottom { padding:16px 12px; border-top:1px solid rgba(255,255,255,.06); }
-  .btn-logout {
-    width:100%; padding:11px; border-radius:10px; background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.5);
-    font-family:'Poppins',sans-serif; font-size:13px; font-weight:500; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; gap:8px; transition:all .2s;
-  }
-  .btn-logout:hover { background:rgba(234,79,185,.1); border-color:var(--magenta); color:var(--magenta); }
+  /* LAYOUT */
+  #app{display:none;}
+  .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:rgba(10,10,10,.97);backdrop-filter:blur(20px);border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;z-index:200;overflow-y:auto;transition:transform .3s ease;}
+  .sidebar.collapsed{transform:translateX(-100%);}
+  .sidebar-logo{padding:22px 20px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .improve-wordmark{display:flex;flex-direction:column;}
+  .improve-wordmark .wm-top{font-size:11px;color:rgba(255,255,255,.4);letter-spacing:1px;}
+  .improve-wordmark .wm-brand{font-size:17px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+  .improve-wordmark .wm-admin{font-size:10px;font-weight:700;color:var(--magenta);background:rgba(234,79,185,.12);padding:2px 8px;border-radius:20px;display:inline-block;margin-top:3px;-webkit-text-fill-color:var(--magenta);}
+  .sidebar-user{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06);}
+  .sidebar-user-btn{display:flex;align-items:center;gap:12px;width:100%;background:none;border:none;cursor:pointer;padding:8px 10px;border-radius:10px;transition:background .2s;text-align:left;}
+  .sidebar-user-btn:hover{background:rgba(255,255,255,.06);}
+  .avatar{width:40px;height:40px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:14px;flex-shrink:0;overflow:hidden;}
+  .avatar img{width:100%;height:100%;object-fit:cover;}
+  .user-name{font-size:13px;font-weight:600;color:var(--white);}
+  .user-role{font-size:11px;color:var(--gray);}
+  .user-edit-hint{font-size:10px;color:var(--cyan);opacity:.8;margin-top:1px;}
+  .sidebar-nav{flex:1;padding:14px 10px;}
+  .nav-item{display:flex;align-items:center;gap:11px;padding:11px 13px;border-radius:10px;color:rgba(255,255,255,.5);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;margin-bottom:3px;border-left:3px solid transparent;}
+  .nav-item:hover{background:rgba(255,255,255,.05);color:var(--white);}
+  .nav-item.active{border-left-color:var(--cyan);background:rgba(76,192,241,.1);color:var(--white);}
+  .nav-item svg{width:17px;height:17px;flex-shrink:0;}
+  .sidebar-bottom{padding:14px 10px;border-top:1px solid rgba(255,255,255,.06);}
+  .btn-logout{width:100%;padding:11px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.4);font-family:'Poppins',sans-serif;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:all .2s;}
+  .btn-logout:hover{background:rgba(234,79,185,.1);border-color:var(--magenta);color:var(--magenta);}
 
-  /* ── MAIN ── */
-  .main { margin-left:var(--sidebar-w); min-height:100vh; transition:margin-left .3s ease; }
-  .main.expanded { margin-left:0; }
-  .topbar {
-    position:sticky; top:0; z-index:50; background:var(--white);
-    border-bottom:1px solid rgba(0,0,0,.07); padding:0 24px;
-    height:64px; display:flex; align-items:center; justify-content:space-between;
-  }
-  .topbar-left { display:flex; align-items:center; gap:12px; }
-  .topbar-title { font-size:17px; font-weight:700; }
-  .topbar-right { display:flex; align-items:center; gap:12px; }
-  .toggle-btn {
-    width:38px; height:38px; border-radius:10px; background:var(--bg);
-    border:1px solid rgba(0,0,0,.08); display:flex; align-items:center;
-    justify-content:center; cursor:pointer; color:var(--gray); transition:background .2s;
-  }
-  .toggle-btn:hover { background:rgba(76,192,241,.1); color:var(--cyan); }
-  .topbar-avatar-btn {
-    width:36px; height:36px; border-radius:50%; background:var(--gradient);
-    display:flex; align-items:center; justify-content:center;
-    font-weight:700; color:white; font-size:13px; cursor:pointer;
-    border:2px solid rgba(255,255,255,.3); overflow:hidden; transition:transform .2s;
-  }
-  .topbar-avatar-btn:hover { transform:scale(1.08); }
-  .topbar-avatar-btn img { width:100%; height:100%; object-fit:cover; }
+  /* MAIN */
+  .main{margin-left:var(--sidebar-w);min-height:100vh;transition:margin-left .3s ease;}
+  .main.expanded{margin-left:0;}
+  .topbar{position:sticky;top:0;z-index:100;background:var(--white);border-bottom:1px solid rgba(0,0,0,.07);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;}
+  .topbar-left{display:flex;align-items:center;gap:12px;}
+  .topbar-title{font-size:16px;font-weight:700;}
+  .topbar-right{display:flex;align-items:center;gap:10px;}
+  .toggle-btn{width:38px;height:38px;border-radius:10px;background:var(--bg);border:1px solid rgba(0,0,0,.08);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray);transition:all .2s;flex-shrink:0;}
+  .toggle-btn:hover{background:rgba(76,192,241,.1);color:var(--cyan);}
+  .topbar-avatar-btn{width:36px;height:36px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:13px;cursor:pointer;border:none;overflow:hidden;transition:transform .2s;}
+  .topbar-avatar-btn:hover{transform:scale(1.08);}
+  .topbar-avatar-btn img{width:100%;height:100%;object-fit:cover;}
 
-  .page { display:none; padding:32px; }
-  .page.active { display:block; }
+  /* PAGES */
+  .page{display:none;padding:28px;}
+  .page.active{display:block;}
 
-  /* ── COMPONENTS ── */
-  .card { background:var(--white); border:1px solid rgba(0,0,0,.07); border-radius:12px; padding:24px; margin-bottom:20px; }
-  .stats-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:28px; }
-  .stat-card { background:var(--white); border:1px solid rgba(0,0,0,.07); border-radius:12px; padding:20px 24px; }
-  .stat-label { font-size:12px; color:var(--gray); font-weight:500; text-transform:uppercase; letter-spacing:.5px; }
-  .stat-value { font-size:32px; font-weight:800; margin:6px 0 2px; }
-  .stat-sub { font-size:12px; color:var(--gray); }
-  .section-title { font-size:17px; font-weight:700; margin-bottom:16px; }
+  /* CARDS */
+  .card{background:var(--white);border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:24px;margin-bottom:20px;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  .section-title{font-size:16px;font-weight:700;margin-bottom:16px;}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px;}
+  .stat-card{background:var(--white);border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:20px 22px;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .stat-label{font-size:11px;color:var(--gray);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+  .stat-value{font-size:30px;font-weight:800;margin:6px 0 2px;}
+  .stat-sub{font-size:12px;color:var(--gray);}
 
-  /* ── TABLE ── */
-  .table-wrap { overflow-x:auto; }
-  table { width:100%; border-collapse:collapse; }
-  th { text-align:left; font-size:11px; font-weight:700; color:var(--gray); text-transform:uppercase; letter-spacing:.5px; padding:12px 16px; border-bottom:2px solid var(--bg); }
-  td { padding:14px 16px; font-size:13px; border-bottom:1px solid rgba(0,0,0,.05); vertical-align:middle; }
-  tr:last-child td { border-bottom:none; }
-  tr:hover td { background:rgba(0,0,0,.015); }
+  /* BUTTONS */
+  .btn{padding:9px 18px;border-radius:10px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;cursor:pointer;border:none;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px;}
+  .btn:hover{opacity:.85;}
+  .btn-gradient{background:var(--gradient);color:white;}
+  .btn-outline{background:transparent;border:1.5px solid rgba(0,0,0,.12);color:var(--gray);}
+  .btn-danger{background:rgba(255,80,80,.08);border:1.5px solid rgba(255,80,80,.2);color:#e04;}
+  .btn-warn{background:rgba(255,160,0,.08);border:1.5px solid rgba(255,160,0,.25);color:#c80;}
+  .btn-sm{padding:6px 13px;font-size:11px;}
+  .btn-icon{width:32px;height:32px;padding:0;border-radius:8px;justify-content:center;}
 
-  /* ── BADGES ── */
-  .badge-pending { background:rgba(234,79,185,.15); color:var(--magenta); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; }
-  .badge-reviewed { background:rgba(76,192,241,.15); color:var(--cyan); font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; }
-  .badge-student { background:rgba(181,190,234,.2); color:#6b7ab8; font-size:11px; font-weight:700; padding:4px 12px; border-radius:20px; }
+  /* FORMS */
+  .form-inline{display:flex;gap:8px;align-items:center;}
+  .form-inline input,.form-inline textarea{flex:1;padding:8px 12px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;background:var(--bg);outline:none;}
+  .form-ctrl{padding:10px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:'Poppins',sans-serif;font-size:14px;background:var(--bg);outline:none;width:100%;}
+  .form-ctrl:focus,.form-inline input:focus{border-color:var(--cyan);}
+  textarea.feedback-area{width:100%;padding:8px 12px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-family:'Poppins',sans-serif;font-size:13px;resize:vertical;min-height:70px;background:var(--bg);outline:none;}
+  textarea.feedback-area:focus{border-color:var(--cyan);}
 
-  /* ── BUTTONS ── */
-  .btn { padding:9px 18px; border-radius:10px; font-family:'Poppins',sans-serif; font-size:12px; font-weight:700; cursor:pointer; border:none; transition:opacity .2s; }
-  .btn:hover { opacity:.85; }
-  .btn-gradient { background:var(--gradient); color:white; }
-  .btn-outline { background:transparent; border:1.5px solid rgba(0,0,0,.12); color:var(--gray); }
-  .btn-sm { padding:6px 14px; font-size:11px; }
-  .btn-danger { background:rgba(255,100,100,.1); border:1px solid rgba(255,100,100,.2); color:#e55; }
+  /* TABLE */
+  .table-wrap{overflow-x:auto;}
+  table{width:100%;border-collapse:collapse;}
+  th{text-align:left;font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;padding:12px 16px;border-bottom:2px solid var(--bg);}
+  td{padding:13px 16px;font-size:13px;border-bottom:1px solid rgba(0,0,0,.05);vertical-align:middle;}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:rgba(0,0,0,.015);}
 
-  /* ── FORMS ── */
-  .form-inline { display:flex; gap:8px; align-items:center; }
-  .form-inline input, .form-inline textarea {
-    flex:1; padding:8px 12px; border:1.5px solid rgba(0,0,0,.1); border-radius:8px;
-    font-family:'Poppins',sans-serif; font-size:13px; background:var(--bg); outline:none;
-  }
-  .form-inline input:focus, .form-inline textarea:focus { border-color:var(--cyan); }
-  textarea.feedback-area { width:100%; padding:8px 12px; border:1.5px solid rgba(0,0,0,.1); border-radius:8px; font-family:'Poppins',sans-serif; font-size:13px; resize:vertical; min-height:70px; background:var(--bg); outline:none; }
-  textarea.feedback-area:focus { border-color:var(--cyan); }
-  .feedback-existing { font-size:12px; font-style:italic; color:#555; padding:8px 12px; background:rgba(76,192,241,.06); border-radius:8px; margin-bottom:8px; }
+  /* TOGGLE */
+  .toggle{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0;}
+  .toggle input{opacity:0;width:0;height:0;}
+  .toggle-slider{position:absolute;cursor:pointer;inset:0;background:rgba(0,0,0,.15);border-radius:22px;transition:.3s;}
+  .toggle-slider:before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:white;border-radius:50%;transition:.3s;}
+  input:checked+.toggle-slider{background:var(--gradient);}
+  input:checked+.toggle-slider:before{transform:translateX(20px);}
 
-  /* ── TOGGLE ── */
-  .toggle { position:relative; display:inline-block; width:44px; height:24px; }
-  .toggle input { opacity:0; width:0; height:0; }
-  .toggle-slider { position:absolute; cursor:pointer; inset:0; background:rgba(0,0,0,.15); border-radius:24px; transition:.3s; }
-  .toggle-slider:before { content:''; position:absolute; width:18px; height:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:.3s; }
-  input:checked + .toggle-slider { background:var(--gradient); }
-  input:checked + .toggle-slider:before { transform:translateX(20px); }
+  /* BADGES */
+  .badge-pending{background:rgba(234,79,185,.15);color:var(--magenta);font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+  .badge-reviewed{background:rgba(76,192,241,.15);color:var(--cyan);font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;white-space:nowrap;}
+  .badge-active{background:rgba(76,192,241,.12);color:var(--cyan);font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;}
+  .badge-suspended{background:rgba(255,80,80,.1);color:#e04;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;}
 
-  /* ── FILTER BAR ── */
-  .filter-bar { display:flex; gap:12px; margin-bottom:20px; flex-wrap:wrap; align-items:center; }
-  .filter-bar select, .filter-bar input {
-    padding:9px 14px; border:1.5px solid rgba(0,0,0,.1); border-radius:10px;
-    font-family:'Poppins',sans-serif; font-size:13px; background:var(--white); outline:none;
-  }
-  .filter-bar select:focus, .filter-bar input:focus { border-color:var(--cyan); }
+  /* MODAL */
+  .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:500;display:none;align-items:center;justify-content:center;}
+  .modal-bg.open{display:flex;}
+  .modal{background:white;border-radius:20px;padding:32px;width:480px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,.2);}
+  .modal h3{font-size:18px;font-weight:700;margin-bottom:20px;}
+  .modal-row{margin-bottom:16px;}
+  .modal-row label{display:block;font-size:12px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:7px;}
+  .modal-footer{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;}
 
-  /* ── MODULE MANAGE ── */
-  .mod-manage-row { display:grid; grid-template-columns:60px 1fr; gap:0; }
-  .mod-num-cell { font-size:22px; font-weight:800; background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  /* STUDENT CARD */
+  .student-card{background:var(--white);border:1px solid rgba(0,0,0,.07);border-radius:14px;margin-bottom:10px;overflow:hidden;transition:box-shadow .2s;box-shadow:0 2px 8px rgba(0,0,0,.04);}
+  .student-card.suspended{border-color:rgba(255,80,80,.2);background:rgba(255,80,80,.02);}
+  .student-header{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;}
+  .student-avatar{width:44px;height:44px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:700;color:white;font-size:15px;flex-shrink:0;overflow:hidden;}
+  .student-avatar img{width:100%;height:100%;object-fit:cover;}
+  .student-info{flex:1;min-width:0;}
+  .student-name{font-size:15px;font-weight:700;}
+  .student-email{font-size:12px;color:var(--gray);margin-top:1px;}
+  .student-stats{display:flex;gap:12px;margin-top:4px;}
+  .student-stat{font-size:11px;color:var(--gray);}
+  .student-stat span{font-weight:700;color:var(--black);}
+  .student-actions{display:flex;gap:8px;flex-shrink:0;align-items:center;}
+  .student-chevron{color:var(--gray);transition:transform .2s;flex-shrink:0;}
+  .student-card.open .student-chevron{transform:rotate(180deg);}
+  .student-body{display:none;padding:0 20px 20px;border-top:1px solid rgba(0,0,0,.06);}
+  .student-card.open .student-body{display:block;}
 
-  /* ── UPLOAD ── */
-  .resource-upload-form { display:flex; flex-direction:column; gap:12px; }
-  .resource-upload-form input[type=text] {
-    padding:11px 14px; border:1.5px solid rgba(0,0,0,.1); border-radius:10px;
-    font-family:'Poppins',sans-serif; font-size:14px; background:var(--bg); outline:none;
-  }
-  .resource-upload-form input[type=text]:focus { border-color:var(--cyan); }
-  .file-drop-zone { border:2px dashed var(--cyan); border-radius:12px; padding:32px; text-align:center; cursor:pointer; background:rgba(76,192,241,.03); }
-  .file-drop-zone:hover { background:rgba(76,192,241,.08); }
-  .file-drop-zone p { font-size:13px; color:var(--gray); }
-  .file-drop-zone a { color:var(--cyan); font-weight:600; }
+  /* MODULE GRID */
+  .modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px;}
+  .mod-tile{background:var(--bg);border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:10px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .mod-tile-info{min-width:0;}
+  .mod-tile-num{font-size:11px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .mod-tile-title{font-size:11px;color:var(--gray);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100px;}
 
-  /* ── PROGRESS CELL ── */
-  .progress-mini { background:var(--bg); border-radius:4px; height:6px; overflow:hidden; margin-top:4px; }
-  .progress-mini-fill { height:100%; background:var(--gradient); border-radius:4px; }
+  /* FILTER BAR */
+  .filter-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;align-items:center;}
+  .filter-bar select,.filter-bar input{padding:9px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:'Poppins',sans-serif;font-size:13px;background:var(--white);outline:none;}
+  .filter-bar select:focus{border-color:var(--cyan);}
 
-  /* ── TOAST ── */
-  .toast { position:fixed; bottom:28px; right:28px; background:var(--black); color:var(--white); padding:14px 22px; border-radius:12px; font-size:14px; font-weight:500; z-index:9999; opacity:0; transform:translateY(10px); transition:all .3s; pointer-events:none; }
-  .toast.show { opacity:1; transform:translateY(0); }
-  .toast.success { border-left:3px solid var(--cyan); }
-  .toast.error { border-left:3px solid var(--magenta); }
+  /* RESOURCE */
+  .file-drop-zone{border:2px dashed var(--cyan);border-radius:12px;padding:28px;text-align:center;cursor:pointer;background:rgba(76,192,241,.03);transition:background .2s;}
+  .file-drop-zone:hover{background:rgba(76,192,241,.08);}
+  .file-drop-zone p{font-size:13px;color:var(--gray);}
+  .file-drop-zone a{color:var(--cyan);font-weight:600;}
 
-  /* ── EMPTY ── */
-  .empty { text-align:center; padding:48px; color:var(--gray); font-size:14px; }
-
-  .link-dl { color:var(--cyan); font-weight:600; font-size:12px; text-decoration:none; }
-  .link-dl:hover { text-decoration:underline; }
+  /* MISC */
+  .progress-mini{background:var(--bg);border-radius:4px;height:6px;overflow:hidden;margin-top:4px;}
+  .progress-mini-fill{height:100%;background:var(--gradient);border-radius:4px;}
+  .link-dl{color:var(--cyan);font-weight:600;font-size:12px;text-decoration:none;}
+  .link-dl:hover{text-decoration:underline;}
+  .empty{text-align:center;padding:48px;color:var(--gray);font-size:14px;}
+  .toast{position:fixed;bottom:28px;right:28px;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);color:white;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:500;z-index:9999;opacity:0;transform:translateY(10px);transition:all .3s;pointer-events:none;}
+  .toast.show{opacity:1;transform:translateY(0);}
+  .toast.success{border-left:3px solid var(--cyan);}
+  .toast.error{border-left:3px solid var(--magenta);}
 </style>
 </head>
 <body>
 
-<!-- ── LOGIN ── -->
+<!-- LOGIN -->
 <div id="login-screen">
   <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
   <div class="login-card">
     <div class="login-logo">
-      <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-        <rect width="48" height="48" rx="14" fill="url(#lg)"/>
-        <path d="M10 16h28M10 24h20M10 32h24" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-        <defs><linearGradient id="lg" x1="0" y1="0" x2="48" y2="48"><stop stop-color="#4cc0f1"/><stop offset=".5" stop-color="#b5beea"/><stop offset="1" stop-color="#ea4fb9"/></linearGradient></defs>
+      <!-- IMPROVE LOGO -->
+      <svg width="64" height="44" viewBox="0 0 64 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="36" height="26" rx="7" stroke="white" stroke-width="2"/>
+        <circle cx="11" cy="14" r="2.5" fill="white"/><circle cx="19" cy="14" r="2.5" fill="white"/><circle cx="27" cy="14" r="2.5" fill="white"/>
+        <path d="M7 27 L5 34 L15 27" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="22" y="17" width="40" height="24" rx="6" stroke="white" stroke-width="1.8" fill="none" opacity=".6"/>
+        <circle cx="34" cy="29" r="2" fill="white" opacity=".6"/><circle cx="42" cy="29" r="2" fill="white" opacity=".6"/><circle cx="50" cy="29" r="2" fill="white" opacity=".6"/>
+        <path d="M28 41 L26 46 L36 41" fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round" opacity=".6"/>
       </svg>
-      <div class="brand">IMPROVE</div>
-      <div class="sub">Ingles IMPROVE Language School</div>
-      <div class="admin-tag">Panel de Profesor</div>
+      <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;">Ingles</div>
+      <div style="font-size:24px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1">IMPROVE</div>
+      <div class="admin-tag" style="margin-top:8px">Panel de Profesor</div>
     </div>
     <h1>Acceso Docente</h1>
     <p class="sub">Ingresá con tu cuenta de profesor</p>
@@ -239,19 +211,31 @@
   </div>
 </div>
 
-<!-- ── APP ── -->
+<!-- APP -->
 <div id="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-logo">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-        <rect width="36" height="36" rx="10" fill="url(#slg)"/>
-        <path d="M8 12h20M8 18h14M8 24h17" stroke="white" stroke-width="2" stroke-linecap="round"/>
-        <defs><linearGradient id="slg" x1="0" y1="0" x2="36" y2="36"><stop stop-color="#4cc0f1"/><stop offset=".5" stop-color="#b5beea"/><stop offset="1" stop-color="#ea4fb9"/></linearGradient></defs>
+      <!-- Chat bubbles icon -->
+      <svg width="38" height="32" viewBox="0 0 64 44" fill="none">
+        <rect x="1" y="1" width="36" height="26" rx="7" stroke="url(#lg1)" stroke-width="2.5"/>
+        <circle cx="11" cy="14" r="2.5" fill="url(#lg1)"/>
+        <circle cx="19" cy="14" r="2.5" fill="url(#lg1)"/>
+        <circle cx="27" cy="14" r="2.5" fill="url(#lg1)"/>
+        <path d="M7 27 L5 34 L15 27" fill="none" stroke="url(#lg1)" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="22" y="17" width="40" height="24" rx="6" stroke="url(#lg2)" stroke-width="2" fill="none"/>
+        <circle cx="34" cy="29" r="2" fill="url(#lg2)"/>
+        <circle cx="42" cy="29" r="2" fill="url(#lg2)"/>
+        <circle cx="50" cy="29" r="2" fill="url(#lg2)"/>
+        <path d="M28 41 L26 46 L36 41" fill="none" stroke="url(#lg2)" stroke-width="1.5" stroke-linejoin="round"/>
+        <defs>
+          <linearGradient id="lg1" x1="0" y1="0" x2="38" y2="28"><stop stop-color="#4cc0f1"/><stop offset="1" stop-color="#b5beea"/></linearGradient>
+          <linearGradient id="lg2" x1="22" y1="17" x2="64" y2="44"><stop stop-color="#b5beea"/><stop offset="1" stop-color="#ea4fb9"/></linearGradient>
+        </defs>
       </svg>
-      <div>
-        <div class="brand-name">IMPROVE</div>
-        <div class="brand-sub">Language School</div>
-        <div class="admin-badge">Profesor</div>
+      <div class="improve-wordmark">
+        <div class="wm-top">Ingles</div>
+        <div class="wm-brand">IMPROVE</div>
+        <div class="wm-admin">Profesor</div>
       </div>
     </div>
     <div class="sidebar-user">
@@ -277,32 +261,32 @@
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
         Alumnos
       </div>
-      <div class="nav-item" onclick="showPage('submissions',this)">
+      <div class="nav-item" id="nav-submissions" onclick="showPage('submissions',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
         Prácticas recibidas
       </div>
-      <div class="nav-item" onclick="showPage('modules',this)">
+      <div class="nav-item" id="nav-modules" onclick="showPage('modules',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg>
         Gestionar módulos
       </div>
-      <div class="nav-item" onclick="showPage('resources',this)">
+      <div class="nav-item" id="nav-resources" onclick="showPage('resources',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg>
         Subir recursos
       </div>
     </nav>
     <div class="sidebar-bottom">
       <button class="btn-logout" onclick="doLogout()">
-        <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
         Cerrar sesión
       </button>
     </div>
   </aside>
 
-  <main class="main">
+  <main class="main" id="main">
     <div class="topbar">
       <div class="topbar-left">
-        <button class="toggle-btn" onclick="toggleSidebar()" title="Mostrar/ocultar menú">
-          <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
+        <button class="toggle-btn" onclick="toggleSidebar()">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
         </button>
         <div class="topbar-title" id="topbar-title">Dashboard</div>
       </div>
@@ -313,15 +297,26 @@
       </div>
     </div>
 
+    <!-- DASHBOARD -->
+    <div id="page-dashboard" class="page active">
+      <div class="stats-row">
+        <div class="stat-card"><div class="stat-label">Total alumnos</div><div class="stat-value" id="d-students">—</div><div class="stat-sub">registrados</div></div>
+        <div class="stat-card"><div class="stat-label">Prácticas pendientes</div><div class="stat-value" id="d-pending">—</div><div class="stat-sub">sin revisar</div></div>
+        <div class="stat-card"><div class="stat-label">Prácticas revisadas</div><div class="stat-value" id="d-reviewed">—</div><div class="stat-sub">con feedback</div></div>
+        <div class="stat-card"><div class="stat-label">Módulos globales</div><div class="stat-value" id="d-unlocked">—</div><div class="stat-sub">desbloqueados</div></div>
+      </div>
+      <div class="card"><div class="section-title">Prácticas recientes</div><div id="dash-recent"></div></div>
+    </div>
+
     <!-- PROFILE -->
     <div id="page-profile" class="page">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:800px">
-        <div class="card" style="grid-column:1/-1;display:flex;align-items:center;gap:24px">
+      <div style="max-width:760px">
+        <div class="card" style="display:flex;align-items:center;gap:24px;margin-bottom:20px">
           <div style="position:relative;flex-shrink:0">
-            <div id="prof-photo" style="width:90px;height:90px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;color:white;overflow:hidden;border:4px solid white;box-shadow:0 4px 20px rgba(0,0,0,.15)">
+            <div id="prof-photo" style="width:88px;height:88px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:28px;color:white;overflow:hidden;border:4px solid white;box-shadow:0 4px 20px rgba(0,0,0,.12)">
               <span id="prof-initials">PR</span>
             </div>
-            <div onclick="document.getElementById('prof-photo-input').click()" style="position:absolute;bottom:0;right:0;width:30px;height:30px;border-radius:50%;background:var(--gradient);border:3px solid white;display:flex;align-items:center;justify-content:center;cursor:pointer">
+            <div onclick="document.getElementById('prof-photo-input').click()" style="position:absolute;bottom:0;right:0;width:28px;height:28px;border-radius:50%;background:var(--gradient);border:3px solid white;display:flex;align-items:center;justify-content:center;cursor:pointer">
               <svg width="12" height="12" viewBox="0 0 20 20" fill="white"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/></svg>
             </div>
             <input type="file" id="prof-photo-input" accept="image/*" style="display:none" onchange="uploadProfPhoto(this)">
@@ -329,54 +324,29 @@
           <div>
             <div style="font-size:20px;font-weight:800" id="prof-display-name">...</div>
             <div style="display:inline-block;margin:6px 0;padding:4px 14px;border-radius:20px;background:var(--gradient);color:white;font-size:11px;font-weight:700">Profesor</div>
-            <div style="font-size:13px;color:var(--gray)" id="prof-display-profession"></div>
+            <div style="font-size:13px;color:var(--gray)" id="prof-display-profession">Completá tu perfil</div>
           </div>
         </div>
-        <div class="card">
-          <div class="section-title">Información personal</div>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Nombre</label><input id="pf-name" type="text" style="width:100%;padding:11px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;background:var(--bg);outline:none"></div>
-            <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Email</label><input id="pf-email" type="text" style="width:100%;padding:11px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;background:var(--bg);outline:none"></div>
-          </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Nombre</label><input id="pf-name" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Email</label><input id="pf-email" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Edad</label><input id="pf-age" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Profesión</label><input id="pf-profession" type="text" class="form-ctrl"></div>
         </div>
-        <div class="card">
-          <div class="section-title">Perfil profesional</div>
-          <div style="display:flex;flex-direction:column;gap:14px">
-            <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Edad</label><input id="pf-age" type="text" style="width:100%;padding:11px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;background:var(--bg);outline:none"></div>
-            <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:6px">Profesión</label><input id="pf-profession" type="text" style="width:100%;padding:11px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-family:Poppins,sans-serif;font-size:14px;background:var(--bg);outline:none"></div>
-          </div>
-        </div>
-        <div style="grid-column:1/-1">
-          <button class="btn btn-gradient" style="padding:13px 32px;font-size:14px" onclick="saveProfile()">Guardar cambios</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- DASHBOARD -->
-    <div id="page-dashboard" class="page active">
-      <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">Total alumnos</div><div class="stat-value" id="d-students">—</div><div class="stat-sub">registrados</div></div>
-        <div class="stat-card"><div class="stat-label">Prácticas pendientes</div><div class="stat-value" id="d-pending">—</div><div class="stat-sub">sin revisar</div></div>
-        <div class="stat-card"><div class="stat-label">Prácticas revisadas</div><div class="stat-value" id="d-reviewed">—</div><div class="stat-sub">con feedback</div></div>
-        <div class="stat-card"><div class="stat-label">Módulos activos</div><div class="stat-value" id="d-unlocked">—</div><div class="stat-sub">de 24 totales</div></div>
-      </div>
-      <div class="card">
-        <div class="section-title">Prácticas recientes</div>
-        <div id="dash-recent"></div>
+        <button class="btn btn-gradient" style="padding:12px 28px;font-size:13px" onclick="saveProfile()">Guardar cambios</button>
       </div>
     </div>
 
     <!-- STUDENTS -->
     <div id="page-students" class="page">
-      <div class="card">
-        <div class="section-title">Alumnos inscriptos</div>
-        <div class="table-wrap">
-          <table id="students-table">
-            <thead><tr><th>Alumno</th><th>Email</th><th>Prácticas enviadas</th><th>Revisadas</th><th>Progreso</th><th>Inscripto</th></tr></thead>
-            <tbody id="students-body"></tbody>
-          </table>
-        </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div style="font-size:16px;font-weight:700">Alumnos inscriptos</div>
+        <button class="btn btn-gradient" onclick="openAddStudent()">
+          <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+          Agregar alumno
+        </button>
       </div>
+      <div id="students-list"></div>
     </div>
 
     <!-- SUBMISSIONS -->
@@ -389,14 +359,15 @@
           <option value="reviewed">Revisado</option>
         </select>
       </div>
-      <div class="card" style="padding:0">
-        <div id="subs-container"></div>
-      </div>
+      <div class="card" style="padding:0"><div id="subs-container"></div></div>
     </div>
 
     <!-- MODULES -->
     <div id="page-modules" class="page">
-      <div id="modules-manage"></div>
+      <div class="card" style="margin-bottom:0;padding:16px 20px;background:rgba(76,192,241,.06);border-color:rgba(76,192,241,.2)">
+        <p style="font-size:13px;color:#444;line-height:1.6">ℹ️ Estos son los <strong>ajustes globales</strong> del contenido (video y PDF por módulo). El desbloqueo individual por alumno se gestiona desde la sección <strong>Alumnos</strong>.</p>
+      </div>
+      <div id="modules-manage" style="margin-top:16px"></div>
     </div>
 
     <!-- RESOURCES -->
@@ -404,14 +375,14 @@
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
         <div class="card">
           <div class="section-title">Subir nuevo recurso</div>
-          <div class="resource-upload-form">
-            <input type="text" id="res-title" placeholder="Título del recurso (ej: Plantilla CV Ejecutivo)">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <input type="text" id="res-title" class="form-ctrl" placeholder="Título del recurso (ej: Plantilla CV Ejecutivo)">
             <div class="file-drop-zone" onclick="document.getElementById('res-file').click()">
               <p>Hacé click o arrastrá el archivo aquí</p>
               <p><a>Buscar archivo</a> — PDF, DOC, XLS (máx 500MB)</p>
               <p id="res-file-name" style="margin-top:8px;font-weight:600;color:var(--cyan)"></p>
             </div>
-            <input type="file" id="res-file" style="display:none" onchange="document.getElementById('res-file-name').textContent = this.files[0]?.name||''">
+            <input type="file" id="res-file" style="display:none" onchange="document.getElementById('res-file-name').textContent=this.files[0]?.name||''">
             <button class="btn btn-gradient" onclick="uploadResource()">Subir recurso</button>
           </div>
         </div>
@@ -424,6 +395,34 @@
   </main>
 </div>
 
+<!-- MODAL: Agregar alumno -->
+<div class="modal-bg" id="modal-add">
+  <div class="modal">
+    <h3 id="modal-title">Agregar alumno</h3>
+    <input type="hidden" id="modal-student-id">
+    <div class="modal-row"><label>Nombre completo</label><input type="text" id="modal-name" class="form-ctrl" placeholder="Nombre Apellido"></div>
+    <div class="modal-row"><label>Email</label><input type="text" id="modal-email" class="form-ctrl" placeholder="alumno@email.com"></div>
+    <div class="modal-row" id="modal-pw-row"><label>Contraseña inicial</label><input type="text" id="modal-password" class="form-ctrl" placeholder="Ej: alumno123"></div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
+      <button class="btn btn-gradient" onclick="saveStudent()">Guardar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: Confirmar eliminación -->
+<div class="modal-bg" id="modal-delete">
+  <div class="modal" style="max-width:380px">
+    <h3>¿Eliminar alumno?</h3>
+    <p style="font-size:14px;color:var(--gray);margin-bottom:8px">Esta acción eliminará al alumno y todas sus prácticas. No se puede deshacer.</p>
+    <p style="font-size:15px;font-weight:700" id="delete-student-name"></p>
+    <div class="modal-footer">
+      <button class="btn btn-outline" onclick="document.getElementById('modal-delete').classList.remove('open')">Cancelar</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -432,6 +431,7 @@ let allSubmissions = [];
 let allStudents = [];
 let allModules = [];
 let sidebarOpen = true;
+let deleteTargetId = null;
 
 // ── INIT ──────────────────────────────────
 async function init() {
@@ -471,62 +471,6 @@ function updateAvatarUI(data) {
   }
 }
 
-function toggleSidebar() {
-  sidebarOpen = !sidebarOpen;
-  document.getElementById('sidebar').classList.toggle('collapsed', !sidebarOpen);
-  document.getElementById('main').classList.toggle('expanded', !sidebarOpen);
-}
-
-function navToProfile() { showPage('profile', document.getElementById('nav-profile')); }
-
-async function loadProfile() {
-  const r = await fetch('/api/profile', { credentials:'include' });
-  const data = await r.json();
-  document.getElementById('pf-name').value = data.name || '';
-  document.getElementById('pf-email').value = data.email || '';
-  document.getElementById('pf-age').value = data.age || '';
-  document.getElementById('pf-profession').value = data.profession || '';
-  document.getElementById('prof-display-name').textContent = data.name || '';
-  document.getElementById('prof-display-profession').textContent = data.profession || 'Completá tu perfil';
-  const initials = (data.name||'').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
-  if (data.photo) {
-    document.getElementById('prof-photo').innerHTML = `<img src="/profiles/${data.photo}" style="width:100%;height:100%;object-fit:cover">`;
-  } else {
-    document.getElementById('prof-initials').textContent = initials;
-  }
-}
-
-async function saveProfile() {
-  const body = {
-    name: document.getElementById('pf-name').value,
-    email: document.getElementById('pf-email').value,
-    age: document.getElementById('pf-age').value,
-    profession: document.getElementById('pf-profession').value,
-  };
-  const r = await fetch('/api/profile', { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
-  if (r.ok) {
-    showToast('Perfil actualizado', 'success');
-    currentUser.name = body.name;
-    updateAvatarUI(body);
-    loadProfile();
-  } else { showToast('Error al guardar', 'error'); }
-}
-
-async function uploadProfPhoto(input) {
-  if (!input.files[0]) return;
-  const fd = new FormData();
-  fd.append('photo', input.files[0]);
-  const r = await fetch('/api/profile/photo', { method:'POST', credentials:'include', body: fd });
-  if (r.ok) {
-    const data = await r.json();
-    showToast('Foto actualizada', 'success');
-    const src = `/profiles/${data.filename}`;
-    document.getElementById('prof-photo').innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
-    document.getElementById('sidebar-avatar-wrap').innerHTML = `<img src="${src}" alt="foto">`;
-    document.getElementById('topbar-avatar-btn').innerHTML = `<img src="${src}" alt="foto">`;
-  } else { showToast('Error al subir foto', 'error'); }
-}
-
 async function loadAll() {
   await Promise.all([loadSubmissions(), loadStudents(), loadModules(), loadResources()]);
   renderDashboard();
@@ -536,43 +480,34 @@ async function loadSubmissions() {
   const r = await fetch('/admin/api/submissions', { credentials:'include' });
   allSubmissions = r.ok ? await r.json() : [];
 }
-
 async function loadStudents() {
   const r = await fetch('/admin/api/students', { credentials:'include' });
   allStudents = r.ok ? await r.json() : [];
 }
-
 async function loadModules() {
   const r = await fetch('/api/modules', { credentials:'include' });
   allModules = r.ok ? await r.json() : [];
 }
-
 async function loadResources() {
   const r = await fetch('/admin/api/resources', { credentials:'include' });
   const list = r.ok ? await r.json() : [];
   renderResources(list);
 }
 
-// ── LOGIN ──────────────────────────────────
+// ── AUTH ──────────────────────────────────
 async function doLogin() {
   const email = document.getElementById('login-email').value;
   const pass = document.getElementById('login-pass').value;
   const errEl = document.getElementById('login-error');
   errEl.style.display = 'none';
   try {
-    const r = await fetch('/api/auth/login', {
-      method:'POST', credentials:'include',
-      headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({ email, password: pass })
-    });
+    const r = await fetch('/api/auth/login', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email,password:pass}) });
     const data = await r.json();
-    if (!r.ok) { errEl.textContent = data.error; errEl.style.display = 'block'; return; }
-    if (data.role !== 'teacher') { errEl.textContent = 'Esta cuenta no tiene acceso de profesor.'; errEl.style.display = 'block'; return; }
-    currentUser = data;
-    await showApp();
-  } catch { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+    if (!r.ok) { errEl.textContent = data.error; errEl.style.display='block'; return; }
+    if (data.role !== 'teacher') { errEl.textContent = 'Esta cuenta no tiene acceso de profesor.'; errEl.style.display='block'; return; }
+    currentUser = data; await showApp();
+  } catch { errEl.textContent = 'Error de conexión'; errEl.style.display='block'; }
 }
-
 document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 
 async function doLogout() {
@@ -580,82 +515,260 @@ async function doLogout() {
   showLogin();
 }
 
+// ── SIDEBAR ────────────────────────────
+function toggleSidebar() {
+  sidebarOpen = !sidebarOpen;
+  document.getElementById('sidebar').classList.toggle('collapsed', !sidebarOpen);
+  document.getElementById('main').classList.toggle('expanded', !sidebarOpen);
+}
+
 // ── NAVIGATION ────────────────────────────
 const pageTitles = { dashboard:'Dashboard', profile:'Mi perfil', students:'Alumnos', submissions:'Prácticas recibidas', modules:'Gestionar módulos', resources:'Subir recursos' };
 
 function showPage(name, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  document.getElementById('page-' + name).classList.add('active');
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('page-'+name).classList.add('active');
   if (el) el.classList.add('active');
-  document.getElementById('topbar-title').textContent = pageTitles[name] || name;
+  document.getElementById('topbar-title').textContent = pageTitles[name]||name;
+  if (name==='profile') loadProfile();
+  if (name==='submissions') renderSubmissions();
+  if (name==='students') { loadStudents().then(renderStudents); }
+  if (name==='modules') renderModules();
+  if (name==='resources') loadResources();
+}
 
-  if (name === 'profile') loadProfile();
-  if (name === 'submissions') renderSubmissions();
-  if (name === 'students') renderStudents();
-  if (name === 'modules') renderModules();
-  if (name === 'resources') loadResources();
+function navToProfile() { showPage('profile', document.getElementById('nav-profile')); }
+
+// ── PROFILE ───────────────────────────────
+async function loadProfile() {
+  const r = await fetch('/api/profile', { credentials:'include' });
+  const data = await r.json();
+  document.getElementById('pf-name').value = data.name||'';
+  document.getElementById('pf-email').value = data.email||'';
+  document.getElementById('pf-age').value = data.age||'';
+  document.getElementById('pf-profession').value = data.profession||'';
+  document.getElementById('prof-display-name').textContent = data.name||'';
+  document.getElementById('prof-display-profession').textContent = data.profession||'Completá tu perfil';
+  const initials = (data.name||'').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('prof-photo').innerHTML = data.photo
+    ? `<img src="/profiles/${data.photo}" style="width:100%;height:100%;object-fit:cover">`
+    : `<span id="prof-initials">${initials}</span>`;
+}
+
+async function saveProfile() {
+  const body = { name:document.getElementById('pf-name').value, email:document.getElementById('pf-email').value, age:document.getElementById('pf-age').value, profession:document.getElementById('pf-profession').value };
+  const r = await fetch('/api/profile', { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
+  if (r.ok) { showToast('Perfil actualizado','success'); currentUser.name=body.name; updateAvatarUI(body); loadProfile(); }
+  else showToast('Error al guardar','error');
+}
+
+async function uploadProfPhoto(input) {
+  if (!input.files[0]) return;
+  const fd = new FormData(); fd.append('photo', input.files[0]);
+  const r = await fetch('/api/profile/photo', { method:'POST', credentials:'include', body:fd });
+  if (r.ok) {
+    const data = await r.json(); const src = `/profiles/${data.filename}`;
+    document.getElementById('prof-photo').innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
+    document.getElementById('sidebar-avatar-wrap').innerHTML = `<img src="${src}" alt="foto">`;
+    document.getElementById('topbar-avatar-btn').innerHTML = `<img src="${src}" alt="foto">`;
+    showToast('Foto actualizada','success');
+  } else showToast('Error al subir foto','error');
 }
 
 // ── DASHBOARD ─────────────────────────────
 function renderDashboard() {
   document.getElementById('d-students').textContent = allStudents.length;
-  const pending = allSubmissions.filter(s => s.status === 'pending').length;
-  const reviewed = allSubmissions.filter(s => s.status === 'reviewed').length;
-  const unlocked = allModules.filter(m => m.is_unlocked).length;
-  document.getElementById('d-pending').textContent = pending;
-  document.getElementById('d-reviewed').textContent = reviewed;
-  document.getElementById('d-unlocked').textContent = unlocked;
-
-  const recent = allSubmissions.slice(0, 5);
-  const container = document.getElementById('dash-recent');
-  if (!recent.length) { container.innerHTML = '<div class="empty">No hay prácticas enviadas todavía.</div>'; return; }
-  container.innerHTML = `<table style="width:100%;border-collapse:collapse">
-    <thead><tr><th>Alumno</th><th>Módulo</th><th>Archivo</th><th>Fecha</th><th>Estado</th></tr></thead>
-    <tbody>
-      ${recent.map(s => `
-        <tr>
-          <td><strong>${s.student_name}</strong></td>
-          <td>Módulo ${s.module_number} — ${s.module_title}</td>
-          <td><a href="/uploads/${s.filename}" target="_blank" class="link-dl">${s.original_name}</a></td>
-          <td style="color:var(--gray);font-size:12px">${new Date(s.created_at).toLocaleDateString('es-AR')}</td>
-          <td><span class="badge-${s.status}">${s.status === 'reviewed' ? '✓ Revisado' : '⏳ Pendiente'}</span></td>
-        </tr>
-      `).join('')}
-    </tbody>
-  </table>`;
+  document.getElementById('d-pending').textContent = allSubmissions.filter(s=>s.status==='pending').length;
+  document.getElementById('d-reviewed').textContent = allSubmissions.filter(s=>s.status==='reviewed').length;
+  document.getElementById('d-unlocked').textContent = allModules.filter(m=>m.is_unlocked).length;
+  const recent = allSubmissions.slice(0,5);
+  const el = document.getElementById('dash-recent');
+  if (!recent.length) { el.innerHTML='<div class="empty">No hay prácticas enviadas todavía.</div>'; return; }
+  el.innerHTML=`<table><thead><tr><th>Alumno</th><th>Módulo</th><th>Archivo</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>
+    ${recent.map(s=>`<tr>
+      <td><strong>${s.student_name}</strong></td>
+      <td>Módulo ${s.module_number}</td>
+      <td><a href="/uploads/${s.filename}" target="_blank" class="link-dl">${s.original_name}</a></td>
+      <td style="color:var(--gray);font-size:12px">${new Date(s.created_at).toLocaleDateString('es-AR')}</td>
+      <td><span class="badge-${s.status}">${s.status==='reviewed'?'✓ Revisado':'⏳ Pendiente'}</span></td>
+    </tr>`).join('')}
+  </tbody></table>`;
 }
 
 // ── STUDENTS ──────────────────────────────
 function renderStudents() {
-  const tbody = document.getElementById('students-body');
-  if (!allStudents.length) { tbody.innerHTML = '<tr><td colspan="6" class="empty">No hay alumnos.</td></tr>'; return; }
-  tbody.innerHTML = allStudents.map(s => {
-    const pct = Math.round((s.reviewed_submissions / Math.max(s.total_submissions, 1)) * 100);
+  const el = document.getElementById('students-list');
+  if (!allStudents.length) { el.innerHTML='<div class="card"><div class="empty">No hay alumnos. Hacé click en "+ Agregar alumno".</div></div>'; return; }
+  el.innerHTML = allStudents.map(s => {
+    const initials = s.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+    const pct = Math.round((s.unlocked_modules/24)*100);
     return `
-      <tr>
-        <td><strong>${s.name}</strong></td>
-        <td style="color:var(--gray);font-size:12px">${s.email}</td>
-        <td style="text-align:center">${s.total_submissions}</td>
-        <td style="text-align:center">${s.reviewed_submissions}</td>
-        <td style="min-width:120px">
-          <div style="font-size:11px;color:var(--gray);margin-bottom:4px">${s.total_submissions} prácticas</div>
-          <div class="progress-mini"><div class="progress-mini-fill" style="width:${Math.min(100,(s.total_submissions/8)*100)}%"></div></div>
-        </td>
-        <td style="color:var(--gray);font-size:12px">${new Date(s.created_at).toLocaleDateString('es-AR')}</td>
-      </tr>
-    `;
+    <div class="student-card ${s.is_suspended?'suspended':''}" id="sc-${s.id}">
+      <div class="student-header" onclick="toggleStudent(${s.id})">
+        <div class="student-avatar">${initials}</div>
+        <div class="student-info">
+          <div class="student-name">${s.name} ${s.is_suspended?'<span class="badge-suspended">Suspendido</span>':''}</div>
+          <div class="student-email">${s.email}</div>
+          <div class="student-stats">
+            <div class="student-stat">Módulos: <span>${s.unlocked_modules}/24</span></div>
+            <div class="student-stat">Prácticas: <span>${s.total_submissions}</span></div>
+            <div class="student-stat">Revisadas: <span>${s.reviewed_submissions}</span></div>
+          </div>
+        </div>
+        <div class="student-actions" onclick="event.stopPropagation()">
+          <button class="btn btn-outline btn-sm" onclick="viewStudentSubmissions(${s.id},'${s.name}')">
+            <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
+            Ver prácticas
+          </button>
+          <button class="btn btn-outline btn-sm btn-icon" title="Editar" onclick="openEditStudent(${s.id},'${s.name.replace(/'/g,"\\'")}','${s.email}')">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/></svg>
+          </button>
+          <button class="btn btn-sm btn-icon ${s.is_suspended?'btn-gradient':'btn-warn'}" title="${s.is_suspended?'Reactivar':'Suspender'}" onclick="toggleSuspend(${s.id})">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          </button>
+          <button class="btn btn-sm btn-icon btn-danger" title="Eliminar" onclick="openDelete(${s.id},'${s.name.replace(/'/g,"\\'")}')">
+            <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+          </button>
+        </div>
+        <svg class="student-chevron" width="18" height="18" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+      </div>
+      <div class="student-body" id="sb-${s.id}">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:700">Acceso a módulos — ${s.name}</div>
+          <div style="font-size:12px;color:var(--gray)">${s.unlocked_modules} de 24 desbloqueados</div>
+        </div>
+        <div class="progress-mini" style="margin-bottom:16px"><div class="progress-mini-fill" style="width:${pct}%"></div></div>
+        <div class="modules-grid" id="mg-${s.id}">
+          <div style="grid-column:1/-1;color:var(--gray);font-size:13px">Cargando módulos...</div>
+        </div>
+      </div>
+    </div>`;
   }).join('');
+}
+
+async function toggleStudent(id) {
+  const card = document.getElementById('sc-' + id);
+  const wasOpen = card.classList.contains('open');
+  card.classList.toggle('open');
+  if (!wasOpen) loadStudentModules(id);
+}
+
+async function loadStudentModules(userId) {
+  const r = await fetch(`/admin/api/students/${userId}/modules`, { credentials:'include' });
+  const mods = await r.json();
+  const grid = document.getElementById('mg-' + userId);
+  grid.innerHTML = mods.map(m => `
+    <div class="mod-tile">
+      <div class="mod-tile-info">
+        <div class="mod-tile-num">${m.number}</div>
+        <div class="mod-tile-title" title="${m.title}">${m.title}</div>
+      </div>
+      <label class="toggle" title="${m.is_unlocked?'Bloquear':'Desbloquear'}">
+        <input type="checkbox" ${m.is_unlocked?'checked':''} onchange="toggleStudentModule(${userId},${m.id},this)">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  `).join('');
+}
+
+async function toggleStudentModule(userId, moduleId, checkbox) {
+  const r = await fetch(`/admin/api/students/${userId}/module/${moduleId}/toggle`, { method:'POST', credentials:'include' });
+  if (r.ok) {
+    const data = await r.json();
+    checkbox.checked = data.is_unlocked;
+    showToast(data.is_unlocked ? 'Módulo desbloqueado' : 'Módulo bloqueado', 'success');
+    await loadStudents(); renderStudents();
+    loadStudentModules(userId);
+  } else { showToast('Error','error'); checkbox.checked = !checkbox.checked; }
+}
+
+function viewStudentSubmissions(studentId, studentName) {
+  showPage('submissions', document.getElementById('nav-submissions'));
+  setTimeout(() => {
+    const sel = document.getElementById('filter-student');
+    sel.value = studentId;
+    filterSubs();
+  }, 100);
+}
+
+// ── ADD / EDIT STUDENT ────────────────────
+function openAddStudent() {
+  document.getElementById('modal-title').textContent = 'Agregar alumno';
+  document.getElementById('modal-student-id').value = '';
+  document.getElementById('modal-name').value = '';
+  document.getElementById('modal-email').value = '';
+  document.getElementById('modal-password').value = '';
+  document.getElementById('modal-pw-row').style.display = 'block';
+  document.getElementById('modal-add').classList.add('open');
+}
+
+function openEditStudent(id, name, email) {
+  document.getElementById('modal-title').textContent = 'Editar alumno';
+  document.getElementById('modal-student-id').value = id;
+  document.getElementById('modal-name').value = name;
+  document.getElementById('modal-email').value = email;
+  document.getElementById('modal-password').value = '';
+  document.getElementById('modal-pw-row').style.display = 'none';
+  document.getElementById('modal-add').classList.add('open');
+}
+
+function closeModal() { document.getElementById('modal-add').classList.remove('open'); }
+
+async function saveStudent() {
+  const id = document.getElementById('modal-student-id').value;
+  const name = document.getElementById('modal-name').value;
+  const email = document.getElementById('modal-email').value;
+  const password = document.getElementById('modal-password').value;
+  if (!name || !email) { showToast('Nombre y email son requeridos','error'); return; }
+  let r;
+  if (id) {
+    r = await fetch(`/admin/api/students/${id}`, { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,email}) });
+  } else {
+    if (!password) { showToast('La contraseña es requerida','error'); return; }
+    r = await fetch('/admin/api/students', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,email,password}) });
+  }
+  const data = await r.json();
+  if (r.ok) {
+    showToast(id ? 'Alumno actualizado' : 'Alumno agregado','success');
+    closeModal();
+    await loadStudents(); renderStudents();
+    renderDashboard();
+  } else showToast(data.error || 'Error','error');
+}
+
+// ── SUSPEND / DELETE ─────────────────────
+async function toggleSuspend(id) {
+  const r = await fetch(`/admin/api/students/${id}/suspend`, { method:'POST', credentials:'include' });
+  if (r.ok) {
+    const data = await r.json();
+    showToast(data.is_suspended ? 'Alumno suspendido' : 'Alumno reactivado', 'success');
+    await loadStudents(); renderStudents();
+  } else showToast('Error','error');
+}
+
+function openDelete(id, name) {
+  deleteTargetId = id;
+  document.getElementById('delete-student-name').textContent = name;
+  document.getElementById('modal-delete').classList.add('open');
+}
+
+async function confirmDelete() {
+  const r = await fetch(`/admin/api/students/${deleteTargetId}`, { method:'DELETE', credentials:'include' });
+  document.getElementById('modal-delete').classList.remove('open');
+  if (r.ok) {
+    showToast('Alumno eliminado','success');
+    await loadAll(); renderStudents(); renderDashboard();
+  } else showToast('Error al eliminar','error');
 }
 
 // ── SUBMISSIONS ───────────────────────────
 function renderSubmissions() {
-  // Populate student filter
   const sel = document.getElementById('filter-student');
   const prev = sel.value;
   sel.innerHTML = '<option value="">Todos los alumnos</option>' +
-    allStudents.map(s => `<option value="${s.id}">${s.name}</option>`).join('');
-  sel.value = prev;
+    allStudents.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
+  if (prev) sel.value = prev;
   filterSubs();
 }
 
@@ -663,31 +776,25 @@ function filterSubs() {
   const studentId = document.getElementById('filter-student').value;
   const status = document.getElementById('filter-status').value;
   let filtered = allSubmissions;
-  if (studentId) filtered = filtered.filter(s => s.user_id == studentId);
-  if (status) filtered = filtered.filter(s => s.status === status);
-
-  const container = document.getElementById('subs-container');
-  if (!filtered.length) { container.innerHTML = '<div class="empty">No hay prácticas con esos filtros.</div>'; return; }
-
-  container.innerHTML = filtered.map(s => `
-    <div style="padding:20px 24px;border-bottom:1px solid rgba(0,0,0,.05)">
-      <div style="display:flex;align-items:flex-start;gap:16px">
+  if (studentId) filtered = filtered.filter(s=>s.user_id==studentId);
+  if (status) filtered = filtered.filter(s=>s.status===status);
+  const el = document.getElementById('subs-container');
+  if (!filtered.length) { el.innerHTML='<div class="empty">No hay prácticas con esos filtros.</div>'; return; }
+  el.innerHTML = filtered.map(s=>`
+    <div style="padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.05)">
+      <div style="display:flex;align-items:flex-start;gap:14px">
         <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px">
             <strong style="font-size:14px">${s.student_name}</strong>
-            <span class="badge-student">${s.student_email}</span>
-            <span class="badge-${s.status}">${s.status === 'reviewed' ? '✓ Revisado' : '⏳ Pendiente'}</span>
+            <span style="font-size:11px;color:var(--gray);background:var(--bg);padding:3px 10px;border-radius:20px">${s.student_email}</span>
+            <span class="badge-${s.status}">${s.status==='reviewed'?'✓ Revisado':'⏳ Pendiente'}</span>
           </div>
-          <div style="font-size:12px;color:var(--gray);margin-bottom:8px">
-            Módulo ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('es-AR')}
-          </div>
-          <div style="margin-bottom:10px">
-            <a href="/uploads/${s.filename}" target="_blank" class="link-dl">📎 ${s.original_name}</a>
-          </div>
-          ${s.notes ? `<div style="font-size:12px;color:#555;padding:8px 12px;background:var(--bg);border-radius:8px;margin-bottom:10px;font-style:italic">"${s.notes}"</div>` : ''}
-          ${s.feedback ? `<div class="feedback-existing">💬 Feedback actual: ${s.feedback}</div>` : ''}
+          <div style="font-size:12px;color:var(--gray);margin-bottom:8px">Módulo ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('es-AR')}</div>
+          <div style="margin-bottom:10px"><a href="/uploads/${s.filename}" target="_blank" class="link-dl">📎 ${s.original_name}</a></div>
+          ${s.notes?`<div style="font-size:12px;color:#555;padding:8px 12px;background:var(--bg);border-radius:8px;margin-bottom:10px;font-style:italic">"${s.notes}"</div>`:''}
+          ${s.feedback?`<div style="font-size:12px;color:var(--cyan);padding:8px 12px;background:rgba(76,192,241,.06);border-radius:8px;margin-bottom:10px">💬 ${s.feedback}</div>`:''}
           <div style="display:flex;gap:8px;align-items:flex-start">
-            <textarea class="feedback-area" id="fb-${s.id}" placeholder="Escribí tu feedback para el alumno...">${s.feedback||''}</textarea>
+            <textarea class="feedback-area" id="fb-${s.id}" placeholder="Escribí tu feedback...">${s.feedback||''}</textarea>
             <button class="btn btn-gradient btn-sm" onclick="saveFeedback(${s.id})">Guardar</button>
           </div>
         </div>
@@ -697,52 +804,36 @@ function filterSubs() {
 }
 
 async function saveFeedback(id) {
-  const feedback = document.getElementById('fb-' + id).value;
-  const r = await fetch(`/admin/api/feedback/${id}`, {
-    method:'POST', credentials:'include',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ feedback })
-  });
-  if (r.ok) {
-    showToast('Feedback guardado', 'success');
-    await loadSubmissions();
-    renderDashboard();
-    filterSubs();
-  } else { showToast('Error al guardar', 'error'); }
+  const feedback = document.getElementById('fb-'+id).value;
+  const r = await fetch(`/admin/api/feedback/${id}`, { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({feedback}) });
+  if (r.ok) { showToast('Feedback guardado','success'); await loadSubmissions(); renderDashboard(); filterSubs(); }
+  else showToast('Error','error');
 }
 
 // ── MODULES ──────────────────────────────
 function renderModules() {
-  const container = document.getElementById('modules-manage');
-  container.innerHTML = allModules.map(m => `
-    <div class="card" style="margin-bottom:16px">
-      <div style="display:flex;align-items:flex-start;gap:20px">
-        <div style="font-size:28px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0;width:40px;text-align:center">${m.number}</div>
+  const el = document.getElementById('modules-manage');
+  el.innerHTML = allModules.map(m=>`
+    <div class="card" style="margin-bottom:14px">
+      <div style="display:flex;align-items:flex-start;gap:18px">
+        <div style="font-size:26px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0;min-width:36px;text-align:center">${m.number}</div>
         <div style="flex:1;min-width:0">
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;flex-wrap:wrap">
-            <strong style="font-size:15px">${m.title}</strong>
-            <span style="font-size:11px;color:var(--gray);background:var(--bg);padding:3px 10px;border-radius:20px">Mes ${m.month}</span>
-            <label class="toggle" title="${m.is_unlocked ? 'Desbloquear/Bloquear' : 'Desbloquear/Bloquear'}">
-              <input type="checkbox" ${m.is_unlocked ? 'checked' : ''} onchange="toggleModule(${m.id}, this)">
-              <span class="toggle-slider"></span>
-            </label>
-            <span style="font-size:11px;color:${m.is_unlocked?'var(--cyan)':'var(--gray)'};font-weight:600">${m.is_unlocked?'Desbloqueado':'Bloqueado'}</span>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="font-size:14px;font-weight:700;margin-bottom:12px">${m.title} <span style="font-size:11px;font-weight:500;color:var(--gray)">(Mes ${m.month})</span></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
             <div>
               <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">YouTube URL</div>
               <div class="form-inline">
                 <input type="text" id="vid-${m.id}" value="${m.video_url||''}" placeholder="https://youtube.com/watch?v=...">
-                <button class="btn btn-gradient btn-sm" onclick="saveVideo(${m.id})">Guardar</button>
+                <button class="btn btn-gradient btn-sm" onclick="saveVideo(${m.id})">OK</button>
               </div>
             </div>
             <div>
-              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">PDF del módulo ${m.pdf_filename ? '— <span style=color:var(--cyan)>✓ Cargado</span>' : ''}</div>
+              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">PDF del módulo ${m.pdf_filename?'<span style="color:var(--cyan)">✓</span>':''}</div>
               <div class="form-inline">
                 <input type="file" id="pdf-${m.id}" accept=".pdf" style="flex:1;padding:6px;font-size:12px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;background:var(--bg)">
                 <button class="btn btn-gradient btn-sm" onclick="savePdf(${m.id})">Subir</button>
               </div>
-              ${m.pdf_filename ? `<div style="margin-top:6px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="link-dl">Ver PDF actual</a></div>` : ''}
+              ${m.pdf_filename?`<div style="margin-top:5px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="link-dl">Ver PDF actual</a></div>`:''}
             </div>
           </div>
         </div>
@@ -751,90 +842,62 @@ function renderModules() {
   `).join('');
 }
 
-async function toggleModule(id, checkbox) {
-  const r = await fetch(`/admin/api/module/${id}/unlock`, { method:'POST', credentials:'include' });
-  if (r.ok) {
-    const data = await r.json();
-    const mod = allModules.find(m => m.id === id);
-    if (mod) mod.is_unlocked = data.is_unlocked;
-    checkbox.checked = data.is_unlocked;
-    const label = checkbox.closest('.card').querySelector('span[style*="font-weight:600"]');
-    if (label) { label.textContent = data.is_unlocked ? 'Desbloqueado' : 'Bloqueado'; label.style.color = data.is_unlocked ? 'var(--cyan)' : 'var(--gray)'; }
-    showToast(data.is_unlocked ? 'Módulo desbloqueado' : 'Módulo bloqueado', 'success');
-    renderDashboard();
-  } else { showToast('Error', 'error'); checkbox.checked = !checkbox.checked; }
-}
-
 async function saveVideo(id) {
-  const url = document.getElementById('vid-' + id).value;
-  const r = await fetch(`/admin/api/module/${id}/video`, {
-    method:'POST', credentials:'include',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ video_url: url })
-  });
-  if (r.ok) {
-    showToast('Video guardado', 'success');
-    const mod = allModules.find(m => m.id === id);
-    if (mod) mod.video_url = url;
-  } else { showToast('Error', 'error'); }
+  const url = document.getElementById('vid-'+id).value;
+  const r = await fetch(`/admin/api/module/${id}/video`, { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({video_url:url}) });
+  if (r.ok) { showToast('Video guardado','success'); const m=allModules.find(x=>x.id===id); if(m) m.video_url=url; }
+  else showToast('Error','error');
 }
 
 async function savePdf(id) {
-  const input = document.getElementById('pdf-' + id);
-  if (!input.files[0]) { showToast('Seleccioná un PDF', 'error'); return; }
-  const fd = new FormData();
-  fd.append('pdf', input.files[0]);
-  const r = await fetch(`/admin/api/module/${id}/pdf`, { method:'POST', credentials:'include', body: fd });
-  if (r.ok) {
-    showToast('PDF subido', 'success');
-    await loadModules();
-    renderModules();
-  } else { showToast('Error al subir PDF', 'error'); }
+  const input = document.getElementById('pdf-'+id);
+  if (!input.files[0]) { showToast('Seleccioná un PDF','error'); return; }
+  const fd = new FormData(); fd.append('pdf', input.files[0]);
+  const r = await fetch(`/admin/api/module/${id}/pdf`, { method:'POST', credentials:'include', body:fd });
+  if (r.ok) { showToast('PDF subido','success'); await loadModules(); renderModules(); }
+  else showToast('Error al subir PDF','error');
 }
 
-// ── RESOURCES ─────────────────────────────
+// ── RESOURCES ────────────────────────────
 async function uploadResource() {
   const title = document.getElementById('res-title').value;
   const file = document.getElementById('res-file').files[0];
-  if (!title) { showToast('Ingresá un título', 'error'); return; }
-  if (!file) { showToast('Seleccioná un archivo', 'error'); return; }
-  const fd = new FormData();
-  fd.append('title', title);
-  fd.append('file', file);
-  const r = await fetch('/admin/api/resources', { method:'POST', credentials:'include', body: fd });
+  if (!title) { showToast('Ingresá un título','error'); return; }
+  if (!file) { showToast('Seleccioná un archivo','error'); return; }
+  const fd = new FormData(); fd.append('title',title); fd.append('file',file);
+  const r = await fetch('/admin/api/resources', { method:'POST', credentials:'include', body:fd });
   if (r.ok) {
-    showToast('Recurso subido', 'success');
-    document.getElementById('res-title').value = '';
-    document.getElementById('res-file').value = '';
-    document.getElementById('res-file-name').textContent = '';
+    showToast('Recurso subido','success');
+    document.getElementById('res-title').value='';
+    document.getElementById('res-file').value='';
+    document.getElementById('res-file-name').textContent='';
     await loadResources();
-  } else { showToast('Error al subir', 'error'); }
+  } else showToast('Error','error');
 }
 
 function renderResources(list) {
-  const container = document.getElementById('res-list');
-  if (!list || !list.length) { container.innerHTML = '<div class="empty">No hay recursos todavía.</div>'; return; }
-  const colors = { PDF:'var(--magenta)', DOC:'var(--cyan)', XLS:'#2da870' };
-  container.innerHTML = list.map(r => `
+  const el = document.getElementById('res-list');
+  if (!list||!list.length) { el.innerHTML='<div class="empty">No hay recursos todavía.</div>'; return; }
+  const colors={PDF:'var(--magenta)',DOC:'var(--cyan)',XLS:'#2da870'};
+  el.innerHTML=list.map(r=>`
     <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)">
-      <div style="width:40px;height:40px;border-radius:8px;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:${colors[r.file_type]||'var(--gray)'}">
-        ${r.file_type}
-      </div>
-      <div style="flex:1;min-width:0">
-        <div style="font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${r.title}</div>
-        <div style="font-size:11px;color:var(--gray)">${new Date(r.created_at).toLocaleDateString('es-AR')}</div>
-      </div>
+      <div style="width:38px;height:38px;border-radius:8px;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:${colors[r.file_type]||'var(--gray)'};flex-shrink:0">${r.file_type}</div>
+      <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.title}</div><div style="font-size:11px;color:var(--gray)">${new Date(r.created_at).toLocaleDateString('es-AR')}</div></div>
       <a href="/resources/${r.filename}" target="_blank" class="btn btn-sm btn-gradient" style="text-decoration:none">Ver</a>
     </div>
   `).join('');
 }
 
 // ── TOAST ─────────────────────────────────
-function showToast(msg, type = 'success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.className = `toast ${type} show`;
-  setTimeout(() => t.classList.remove('show'), 3000);
+function showToast(msg, type='success') {
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.className=`toast ${type} show`;
+  setTimeout(()=>t.classList.remove('show'),3000);
 }
+
+// Close modals clicking outside
+document.getElementById('modal-add').addEventListener('click', e=>{ if(e.target===e.currentTarget) closeModal(); });
+document.getElementById('modal-delete').addEventListener('click', e=>{ if(e.target===e.currentTarget) document.getElementById('modal-delete').classList.remove('open'); });
 
 init();
 </script>
