@@ -120,21 +120,29 @@ app.post('/api/profile/photo', requireAuth, uploadProfilePhoto.single('photo'), 
 
 app.get('/api/modules', requireAuth, async (req, res) => {
   try {
+    // Always fetch all modules first
+    const modsResult = await pool.query('SELECT * FROM modules ORDER BY number');
+    const modules = modsResult.rows;
+
     if (req.session.role === 'teacher') {
-      const result = await pool.query('SELECT * FROM modules ORDER BY number');
-      return res.json(result.rows);
+      return res.json(modules);
     }
-    // Students: use per-student access table (explicit columns avoid duplicate is_unlocked from m.*)
-    const result = await pool.query(
-      `SELECT m.id, m.number, m.month, m.title, m.description, m.practice_instructions,
-              m.video_url, m.pdf_filename,
-              COALESCE(sma.is_unlocked, FALSE) as is_unlocked
-       FROM modules m
-       LEFT JOIN student_module_access sma ON sma.module_id = m.id AND sma.user_id = $1
-       ORDER BY m.number`,
-      [req.session.userId]
-    );
-    res.json(result.rows);
+
+    // For students: get their unlocked module IDs from student_module_access
+    // Use a separate try/catch so if the table doesn't exist yet, we still return all modules (locked)
+    let unlockedIds = new Set();
+    try {
+      const accessResult = await pool.query(
+        'SELECT module_id FROM student_module_access WHERE user_id = $1 AND is_unlocked = TRUE',
+        [req.session.userId]
+      );
+      accessResult.rows.forEach(r => unlockedIds.add(r.module_id));
+    } catch (_) {
+      // student_module_access table may not exist yet; all modules will appear locked
+    }
+
+    const studentModules = modules.map(m => ({ ...m, is_unlocked: unlockedIds.has(m.id) }));
+    res.json(studentModules);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
