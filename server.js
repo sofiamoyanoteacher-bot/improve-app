@@ -120,29 +120,8 @@ app.post('/api/profile/photo', requireAuth, uploadProfilePhoto.single('photo'), 
 
 app.get('/api/modules', requireAuth, async (req, res) => {
   try {
-    // Always fetch all modules first
-    const modsResult = await pool.query('SELECT * FROM modules ORDER BY number');
-    const modules = modsResult.rows;
-
-    if (req.session.role === 'teacher') {
-      return res.json(modules);
-    }
-
-    // For students: get their unlocked module IDs from student_module_access
-    // Use a separate try/catch so if the table doesn't exist yet, we still return all modules (locked)
-    let unlockedIds = new Set();
-    try {
-      const accessResult = await pool.query(
-        'SELECT module_id FROM student_module_access WHERE user_id = $1 AND is_unlocked = TRUE',
-        [req.session.userId]
-      );
-      accessResult.rows.forEach(r => unlockedIds.add(r.module_id));
-    } catch (_) {
-      // student_module_access table may not exist yet; all modules will appear locked
-    }
-
-    const studentModules = modules.map(m => ({ ...m, is_unlocked: unlockedIds.has(m.id) }));
-    res.json(studentModules);
+    const result = await pool.query('SELECT * FROM modules ORDER BY number');
+    res.json(result.rows);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
