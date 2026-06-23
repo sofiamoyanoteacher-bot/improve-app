@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -202,13 +202,13 @@
       </svg>
       <div style="margin-top:12px;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:2px;text-transform:uppercase;">Ingles</div>
       <div style="font-size:24px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.1">IMPROVE</div>
-      <div class="admin-tag" style="margin-top:8px">Panel de Profesor</div>
+      <div class="admin-tag" style="margin-top:8px">Teacher Panel</div>
     </div>
-    <h1>Acceso Docente</h1>
-    <p class="sub">Ingresá con tu cuenta de profesor</p>
+    <h1>Teacher Login</h1>
+    <p class="sub">Log in with your teacher account</p>
     <div class="form-group"><label>Email</label><input type="email" id="login-email" placeholder="profesor@improve.com"/></div>
-    <div class="form-group"><label>Contraseña</label><input type="password" id="login-pass" placeholder="••••••••"/></div>
-    <button class="btn-login" onclick="doLogin()">Ingresar al panel</button>
+    <div class="form-group"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"/></div>
+    <button class="btn-login" onclick="doLogin()">Log in to panel</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
@@ -237,16 +237,16 @@
       <div class="improve-wordmark">
         <div class="wm-top">Ingles</div>
         <div class="wm-brand">IMPROVE</div>
-        <div class="wm-admin">Profesor</div>
+        <div class="wm-admin">Teacher</div>
       </div>
     </div>
     <div class="sidebar-user">
       <button class="sidebar-user-btn" onclick="navToProfile()">
         <div class="avatar" id="sidebar-avatar-wrap"><span id="sidebar-initials">PR</span></div>
         <div>
-          <div class="user-name" id="sidebar-name">Profesor</div>
-          <div class="user-role">Panel de administración</div>
-          <div class="user-edit-hint">Editar perfil →</div>
+          <div class="user-name" id="sidebar-name">Teacher</div>
+          <div class="user-role">Admin panel</div>
+          <div class="user-edit-hint">Edit profile &rarr;</div>
         </div>
       </button>
     </div>
@@ -257,7 +257,7 @@
       </div>
       <div class="nav-item" id="nav-profile" onclick="showPage('profile',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
-        Mi perfil
+        My Profile
       </div>
       <div class="nav-item" id="nav-students" onclick="showPage('students',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/></svg>
@@ -265,21 +265,21 @@
       </div>
       <div class="nav-item" id="nav-submissions" onclick="showPage('submissions',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
-        Prácticas recibidas
+        Submissions
       </div>
       <div class="nav-item" id="nav-modules" onclick="showPage('modules',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg>
-        Gestionar módulos
+        Manage Modules
       </div>
       <div class="nav-item" id="nav-resources" onclick="showPage('resources',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg>
-        Subir recursos
+        Upload Resources
       </div>
     </nav>
     <div class="sidebar-bottom">
       <button class="btn-logout" onclick="doLogout()">
         <svg width="15" height="15" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
-        Cerrar sesión
+        Log out
       </button>
     </div>
   </aside>
@@ -302,12 +302,12 @@
     <!-- DASHBOARD -->
     <div id="page-dashboard" class="page active">
       <div class="stats-row">
-        <div class="stat-card" onclick="showPage('students',document.getElementById('nav-students'))" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(76,192,241,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Total alumnos</div><div class="stat-value" id="d-students">—</div><div class="stat-sub">registrados →</div></div>
-        <div class="stat-card" onclick="goSubmissions('pending')" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(234,79,185,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Prácticas pendientes</div><div class="stat-value" id="d-pending">—</div><div class="stat-sub">sin revisar →</div></div>
-        <div class="stat-card" onclick="goSubmissions('reviewed')" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(34,197,94,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Prácticas revisadas</div><div class="stat-value" id="d-reviewed">—</div><div class="stat-sub">con feedback →</div></div>
-        <div class="stat-card" onclick="showPage('modules',document.getElementById('nav-modules'))" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(181,190,234,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Módulos globales</div><div class="stat-value" id="d-unlocked">—</div><div class="stat-sub">desbloqueados →</div></div>
+        <div class="stat-card" onclick="showPage('students',document.getElementById('nav-students'))" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(76,192,241,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Total students</div><div class="stat-value" id="d-students">—</div><div class="stat-sub">registered &rarr;</div></div>
+        <div class="stat-card" onclick="goSubmissions('pending')" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(234,79,185,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Pending submissions</div><div class="stat-value" id="d-pending">—</div><div class="stat-sub">not reviewed &rarr;</div></div>
+        <div class="stat-card" onclick="goSubmissions('reviewed')" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(34,197,94,.18)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Reviewed submissions</div><div class="stat-value" id="d-reviewed">—</div><div class="stat-sub">with feedback &rarr;</div></div>
+        <div class="stat-card" onclick="showPage('modules',document.getElementById('nav-modules'))" style="cursor:pointer;transition:box-shadow .2s,transform .15s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(181,190,234,.3)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''"><div class="stat-label">Global modules</div><div class="stat-value" id="d-unlocked">—</div><div class="stat-sub">unlocked &rarr;</div></div>
       </div>
-      <div class="card"><div class="section-title">Prácticas recientes</div><div id="dash-recent"></div></div>
+      <div class="card"><div class="section-title">Recent submissions</div><div id="dash-recent"></div></div>
     </div>
 
     <!-- PROFILE -->
@@ -325,27 +325,27 @@
           </div>
           <div>
             <div style="font-size:20px;font-weight:800" id="prof-display-name">...</div>
-            <div style="display:inline-block;margin:6px 0;padding:4px 14px;border-radius:20px;background:var(--gradient);color:white;font-size:11px;font-weight:700">Profesor</div>
-            <div style="font-size:13px;color:var(--gray)" id="prof-display-profession">Completá tu perfil</div>
+            <div style="display:inline-block;margin:6px 0;padding:4px 14px;border-radius:20px;background:var(--gradient);color:white;font-size:11px;font-weight:700">Teacher</div>
+            <div style="font-size:13px;color:var(--gray)" id="prof-display-profession">Complete your profile</div>
           </div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
-          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Nombre</label><input id="pf-name" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Name</label><input id="pf-name" type="text" class="form-ctrl"></div>
           <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Email</label><input id="pf-email" type="text" class="form-ctrl"></div>
-          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Edad</label><input id="pf-age" type="text" class="form-ctrl"></div>
-          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Profesión</label><input id="pf-profession" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Age</label><input id="pf-age" type="text" class="form-ctrl"></div>
+          <div><label style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;display:block;margin-bottom:7px">Profession</label><input id="pf-profession" type="text" class="form-ctrl"></div>
         </div>
-        <button class="btn btn-gradient" style="padding:12px 28px;font-size:13px" onclick="saveProfile()">Guardar cambios</button>
+        <button class="btn btn-gradient" style="padding:12px 28px;font-size:13px" onclick="saveProfile()">Save changes</button>
       </div>
     </div>
 
     <!-- STUDENTS -->
     <div id="page-students" class="page">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-        <div style="font-size:16px;font-weight:700">Alumnos inscriptos</div>
+        <div style="font-size:16px;font-weight:700">Enrolled students</div>
         <button class="btn btn-gradient" onclick="openAddStudent()">
           <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
-          Agregar alumno
+          Add student
         </button>
       </div>
       <div id="students-list"></div>
@@ -354,11 +354,11 @@
     <!-- SUBMISSIONS -->
     <div id="page-submissions" class="page">
       <div class="filter-bar">
-        <select id="filter-student" onchange="filterSubs()"><option value="">Todos los alumnos</option></select>
+        <select id="filter-student" onchange="filterSubs()"><option value="">All students</option></select>
         <select id="filter-status" onchange="filterSubs()">
-          <option value="">Todos los estados</option>
-          <option value="pending">Pendiente</option>
-          <option value="reviewed">Revisado</option>
+          <option value="">All statuses</option>
+          <option value="pending">Pending</option>
+          <option value="reviewed">Reviewed</option>
         </select>
       </div>
       <div class="card" style="padding:0"><div id="subs-container"></div></div>
@@ -367,7 +367,7 @@
     <!-- MODULES -->
     <div id="page-modules" class="page">
       <div class="card" style="margin-bottom:0;padding:16px 20px;background:rgba(76,192,241,.06);border-color:rgba(76,192,241,.2)">
-        <p style="font-size:13px;color:#444;line-height:1.6">ℹ️ Estos son los <strong>ajustes globales</strong> del contenido (video y PDF por módulo). El desbloqueo individual por alumno se gestiona desde la sección <strong>Alumnos</strong>.</p>
+        <p style="font-size:13px;color:#444;line-height:1.6">ℹ️ These are the <strong>global content settings</strong> (video and PDF per module). Individual student unlocking is managed from the <strong>Students</strong> section.</p>
       </div>
       <div id="modules-manage" style="margin-top:16px"></div>
     </div>
@@ -376,51 +376,51 @@
     <div id="page-resources" class="page">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
         <div class="card">
-          <div class="section-title">Subir nuevo recurso</div>
+          <div class="section-title">Upload new resource</div>
           <div style="display:flex;flex-direction:column;gap:12px">
-            <input type="text" id="res-title" class="form-ctrl" placeholder="Título del recurso (ej: Plantilla CV Ejecutivo)">
+            <input type="text" id="res-title" class="form-ctrl" placeholder="Resource title (e.g.: Executive CV Template)">
             <div class="file-drop-zone" onclick="document.getElementById('res-file').click()">
-              <p>Hacé click o arrastrá el archivo aquí</p>
-              <p><a>Buscar archivo</a> — PDF, DOC, XLS (máx 500MB)</p>
+              <p>Click or drag the file here</p>
+              <p><a>Browse file</a> — PDF, DOC, XLS (max 500MB)</p>
               <p id="res-file-name" style="margin-top:8px;font-weight:600;color:var(--cyan)"></p>
             </div>
             <input type="file" id="res-file" style="display:none" onchange="document.getElementById('res-file-name').textContent=this.files[0]?.name||''">
-            <button class="btn btn-gradient" onclick="uploadResource()">Subir recurso</button>
+            <button class="btn btn-gradient" onclick="uploadResource()">Upload resource</button>
           </div>
         </div>
         <div class="card">
-          <div class="section-title">Recursos existentes</div>
-          <div id="res-list"><div class="empty">No hay recursos todavía.</div></div>
+          <div class="section-title">Existing resources</div>
+          <div id="res-list"><div class="empty">No resources yet.</div></div>
         </div>
       </div>
     </div>
   </main>
 </div>
 
-<!-- MODAL: Agregar alumno -->
+<!-- MODAL: Add student -->
 <div class="modal-bg" id="modal-add">
   <div class="modal">
-    <h3 id="modal-title">Agregar alumno</h3>
+    <h3 id="modal-title">Add student</h3>
     <input type="hidden" id="modal-student-id">
-    <div class="modal-row"><label>Nombre completo</label><input type="text" id="modal-name" class="form-ctrl" placeholder="Nombre Apellido"></div>
-    <div class="modal-row"><label>Email</label><input type="text" id="modal-email" class="form-ctrl" placeholder="alumno@email.com"></div>
-    <div class="modal-row" id="modal-pw-row"><label>Contraseña inicial</label><input type="text" id="modal-password" class="form-ctrl" placeholder="Ej: alumno123"></div>
+    <div class="modal-row"><label>Full name</label><input type="text" id="modal-name" class="form-ctrl" placeholder="First Last name"></div>
+    <div class="modal-row"><label>Email</label><input type="text" id="modal-email" class="form-ctrl" placeholder="student@email.com"></div>
+    <div class="modal-row" id="modal-pw-row"><label>Password inicial</label><input type="text" id="modal-password" class="form-ctrl" placeholder="E.g.: student123"></div>
     <div class="modal-footer">
-      <button class="btn btn-outline" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-gradient" onclick="saveStudent()">Guardar</button>
+      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
+      <button class="btn btn-gradient" onclick="saveStudent()">Save</button>
     </div>
   </div>
 </div>
 
-<!-- MODAL: Confirmar eliminación -->
+<!-- MODAL: Confirm deletion -->
 <div class="modal-bg" id="modal-delete">
   <div class="modal" style="max-width:380px">
-    <h3>¿Eliminar alumno?</h3>
-    <p style="font-size:14px;color:var(--gray);margin-bottom:8px">Esta acción eliminará al alumno y todas sus prácticas. No se puede deshacer.</p>
+    <h3>Delete student?</h3>
+    <p style="font-size:14px;color:var(--gray);margin-bottom:8px">This action will delete the student and all their submissions. This cannot be undone.</p>
     <p style="font-size:15px;font-weight:700" id="delete-student-name"></p>
     <div class="modal-footer">
-      <button class="btn btn-outline" onclick="document.getElementById('modal-delete').classList.remove('open')">Cancelar</button>
-      <button class="btn btn-danger" onclick="confirmDelete()">Eliminar</button>
+      <button class="btn btn-outline" onclick="document.getElementById('modal-delete').classList.remove('open')">Cancel</button>
+      <button class="btn btn-danger" onclick="confirmDelete()">Delete</button>
     </div>
   </div>
 </div>
@@ -506,9 +506,9 @@ async function doLogin() {
     const r = await fetch('/api/auth/login', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email,password:pass}) });
     const data = await r.json();
     if (!r.ok) { errEl.textContent = data.error; errEl.style.display='block'; return; }
-    if (data.role !== 'teacher') { errEl.textContent = 'Esta cuenta no tiene acceso de profesor.'; errEl.style.display='block'; return; }
+    if (data.role !== 'teacher') { errEl.textContent = 'This account does not have teacher access.'; errEl.style.display='block'; return; }
     currentUser = data; await showApp();
-  } catch { errEl.textContent = 'Error de conexión'; errEl.style.display='block'; }
+  } catch { errEl.textContent = 'Connection error'; errEl.style.display='block'; }
 }
 document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 
@@ -525,7 +525,7 @@ function toggleSidebar() {
 }
 
 // ── NAVIGATION ────────────────────────────
-const pageTitles = { dashboard:'Dashboard', profile:'Mi perfil', students:'Alumnos', submissions:'Prácticas recibidas', modules:'Gestionar módulos', resources:'Subir recursos' };
+const pageTitles = { dashboard:'Dashboard', profile:'My Profile', students:'Alumnos', submissions:'Submissions', modules:'Manage Modules', resources:'Upload Resources' };
 
 function showPage(name, el) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -551,7 +551,7 @@ async function loadProfile() {
   document.getElementById('pf-age').value = data.age||'';
   document.getElementById('pf-profession').value = data.profession||'';
   document.getElementById('prof-display-name').textContent = data.name||'';
-  document.getElementById('prof-display-profession').textContent = data.profession||'Completá tu perfil';
+  document.getElementById('prof-display-profession').textContent = data.profession||'Complete your profile';
   const initials = (data.name||'').split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
   document.getElementById('prof-photo').innerHTML = data.photo
     ? `<img src="/profiles/${data.photo}" style="width:100%;height:100%;object-fit:cover">`
@@ -561,8 +561,8 @@ async function loadProfile() {
 async function saveProfile() {
   const body = { name:document.getElementById('pf-name').value, email:document.getElementById('pf-email').value, age:document.getElementById('pf-age').value, profession:document.getElementById('pf-profession').value };
   const r = await fetch('/api/profile', { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body) });
-  if (r.ok) { showToast('Perfil actualizado','success'); currentUser.name=body.name; updateAvatarUI(body); loadProfile(); }
-  else showToast('Error al guardar','error');
+  if (r.ok) { showToast('Profile updated','success'); currentUser.name=body.name; updateAvatarUI(body); loadProfile(); }
+  else showToast('Error saving','error');
 }
 
 async function uploadProfPhoto(input) {
@@ -574,8 +574,8 @@ async function uploadProfPhoto(input) {
     document.getElementById('prof-photo').innerHTML = `<img src="${src}" style="width:100%;height:100%;object-fit:cover">`;
     document.getElementById('sidebar-avatar-wrap').innerHTML = `<img src="${src}" alt="foto">`;
     document.getElementById('topbar-avatar-btn').innerHTML = `<img src="${src}" alt="foto">`;
-    showToast('Foto actualizada','success');
-  } else showToast('Error al subir foto','error');
+    showToast('Photo updated','success');
+  } else showToast('Error uploading photo','error');
 }
 
 // ── DASHBOARD ─────────────────────────────
@@ -586,14 +586,14 @@ function renderDashboard() {
   document.getElementById('d-unlocked').textContent = allModules.filter(m=>m.is_unlocked).length;
   const recent = allSubmissions.slice(0,5);
   const el = document.getElementById('dash-recent');
-  if (!recent.length) { el.innerHTML='<div class="empty">No hay prácticas enviadas todavía.</div>'; return; }
-  el.innerHTML=`<table><thead><tr><th>Alumno</th><th>Módulo</th><th>Archivo</th><th>Fecha</th><th>Estado</th></tr></thead><tbody>
+  if (!recent.length) { el.innerHTML='<div class="empty">No submissions yet.</div>'; return; }
+  el.innerHTML=`<table><thead><tr><th>Student</th><th>Module</th><th>File</th><th>Date</th><th>Status</th></tr></thead><tbody>
     ${recent.map(s=>`<tr>
       <td><strong>${s.student_name}</strong></td>
-      <td>Módulo ${s.module_number}</td>
+      <td>Module ${s.module_number}</td>
       <td><a href="/uploads/${s.filename}" target="_blank" class="link-dl">${s.original_name}</a></td>
-      <td style="color:var(--gray);font-size:12px">${new Date(s.created_at).toLocaleDateString('es-AR')}</td>
-      <td><button class="status-btn badge-${s.status}" onclick="toggleStatus(${s.id})" title="Cambiar estado">${s.status==='reviewed'?'✓ Corregido':'⏳ Pendiente'}</button></td>
+      <td style="color:var(--gray);font-size:12px">${new Date(s.created_at).toLocaleDateString('en-US')}</td>
+      <td><button class="status-btn badge-${s.status}" onclick="toggleStatus(${s.id})" title="Change status">${s.status==='reviewed'?'✓ Reviewed':'⏳ Pending'}</button></td>
     </tr>`).join('')}
   </tbody></table>`;
 }
@@ -613,16 +613,16 @@ async function toggleStatus(id) {
   const r = await fetch(`/admin/api/submissions/${id}/status`, { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({status: newStatus}) });
   if (r.ok) {
     sub.status = newStatus;
-    showToast(newStatus === 'reviewed' ? '✓ Marcado como corregido' : 'Marcado como pendiente', 'success');
+    showToast(newStatus === 'reviewed' ? '✓ Marked as reviewed' : 'Marked as pending', 'success');
     renderDashboard();
     if (document.getElementById('page-submissions').classList.contains('active')) filterSubs();
-  } else showToast('Error al cambiar estado', 'error');
+  } else showToast('Error changing status', 'error');
 }
 
 // ── STUDENTS ──────────────────────────────
 function renderStudents() {
   const el = document.getElementById('students-list');
-  if (!allStudents.length) { el.innerHTML='<div class="card"><div class="empty">No hay alumnos. Hacé click en "+ Agregar alumno".</div></div>'; return; }
+  if (!allStudents.length) { el.innerHTML='<div class="card"><div class="empty">No students yet. Click "+ Add student".</div></div>'; return; }
   el.innerHTML = allStudents.map(s => {
     const initials = s.name.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
     const pct = Math.round((s.unlocked_modules/24)*100);
@@ -631,26 +631,26 @@ function renderStudents() {
       <div class="student-header" onclick="toggleStudent(${s.id})">
         <div class="student-avatar">${initials}</div>
         <div class="student-info">
-          <div class="student-name">${s.name} ${s.is_suspended?'<span class="badge-suspended">Suspendido</span>':''}</div>
+          <div class="student-name">${s.name} ${s.is_suspended?'<span class="badge-suspended">Suspended</span>':''}</div>
           <div class="student-email">${s.email}</div>
           <div class="student-stats">
-            <div class="student-stat">Módulos: <span>${s.unlocked_modules}/24</span></div>
-            <div class="student-stat">Prácticas: <span>${s.total_submissions}</span></div>
-            <div class="student-stat">Revisadas: <span>${s.reviewed_submissions}</span></div>
+            <div class="student-stat">Modules: <span>${s.unlocked_modules}/24</span></div>
+            <div class="student-stat">Submissions: <span>${s.total_submissions}</span></div>
+            <div class="student-stat">Reviewed: <span>${s.reviewed_submissions}</span></div>
           </div>
         </div>
         <div class="student-actions" onclick="event.stopPropagation()">
           <button class="btn btn-outline btn-sm" onclick="viewStudentSubmissions(${s.id},'${s.name}')">
             <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
-            Ver prácticas
+            View submissions
           </button>
-          <button class="btn btn-outline btn-sm btn-icon" title="Editar" onclick="openEditStudent(${s.id},'${s.name.replace(/'/g,"\\'")}','${s.email}')">
+          <button class="btn btn-outline btn-sm btn-icon" title="Edit" onclick="openEditStudent(${s.id},'${s.name.replace(/'/g,"\\'")}','${s.email}')">
             <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/></svg>
           </button>
-          <button class="btn btn-sm btn-icon ${s.is_suspended?'btn-gradient':'btn-warn'}" title="${s.is_suspended?'Reactivar':'Suspender'}" onclick="toggleSuspend(${s.id})">
+          <button class="btn btn-sm btn-icon ${s.is_suspended?'btn-gradient':'btn-warn'}" title="${s.is_suspended?'Reactivate':'Suspend'}" onclick="toggleSuspend(${s.id})">
             <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
           </button>
-          <button class="btn btn-sm btn-icon btn-danger" title="Eliminar" onclick="openDelete(${s.id},'${s.name.replace(/'/g,"\\'")}')">
+          <button class="btn btn-sm btn-icon btn-danger" title="Delete" onclick="openDelete(${s.id},'${s.name.replace(/'/g,"\\'")}')">
             <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
           </button>
         </div>
@@ -658,12 +658,12 @@ function renderStudents() {
       </div>
       <div class="student-body" id="sb-${s.id}">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;margin-bottom:12px">
-          <div style="font-size:13px;font-weight:700">Acceso a módulos — ${s.name}</div>
-          <div style="font-size:12px;color:var(--gray)">${s.unlocked_modules} de 24 desbloqueados</div>
+          <div style="font-size:13px;font-weight:700">Module access — ${s.name}</div>
+          <div style="font-size:12px;color:var(--gray)">${s.unlocked_modules} of 24 unlocked</div>
         </div>
         <div class="progress-mini" style="margin-bottom:16px"><div class="progress-mini-fill" style="width:${pct}%"></div></div>
         <div class="modules-grid" id="mg-${s.id}">
-          <div style="grid-column:1/-1;color:var(--gray);font-size:13px">Cargando módulos...</div>
+          <div style="grid-column:1/-1;color:var(--gray);font-size:13px">Loading modules...</div>
         </div>
       </div>
     </div>`;
@@ -687,7 +687,7 @@ async function loadStudentModules(userId) {
         <div class="mod-tile-num">${m.number}</div>
         <div class="mod-tile-title" title="${m.title}">${m.title}</div>
       </div>
-      <label class="toggle" title="${m.is_unlocked?'Bloquear':'Desbloquear'}">
+      <label class="toggle" title="${m.is_unlocked?'Lock':'Unlock'}">
         <input type="checkbox" ${m.is_unlocked?'checked':''} onchange="toggleStudentModule(${userId},${m.id},this)">
         <span class="toggle-slider"></span>
       </label>
@@ -700,7 +700,7 @@ async function toggleStudentModule(userId, moduleId, checkbox) {
   if (r.ok) {
     const data = await r.json();
     checkbox.checked = data.is_unlocked;
-    showToast(data.is_unlocked ? 'Módulo desbloqueado' : 'Módulo bloqueado', 'success');
+    showToast(data.is_unlocked ? 'Module unlocked' : 'Module locked', 'success');
     await loadStudents(); renderStudents();
     loadStudentModules(userId);
   } else { showToast('Error','error'); checkbox.checked = !checkbox.checked; }
@@ -717,7 +717,7 @@ function viewStudentSubmissions(studentId, studentName) {
 
 // ── ADD / EDIT STUDENT ────────────────────
 function openAddStudent() {
-  document.getElementById('modal-title').textContent = 'Agregar alumno';
+  document.getElementById('modal-title').textContent = 'Add student';
   document.getElementById('modal-student-id').value = '';
   document.getElementById('modal-name').value = '';
   document.getElementById('modal-email').value = '';
@@ -727,7 +727,7 @@ function openAddStudent() {
 }
 
 function openEditStudent(id, name, email) {
-  document.getElementById('modal-title').textContent = 'Editar alumno';
+  document.getElementById('modal-title').textContent = 'Edit student';
   document.getElementById('modal-student-id').value = id;
   document.getElementById('modal-name').value = name;
   document.getElementById('modal-email').value = email;
@@ -743,17 +743,17 @@ async function saveStudent() {
   const name = document.getElementById('modal-name').value;
   const email = document.getElementById('modal-email').value;
   const password = document.getElementById('modal-password').value;
-  if (!name || !email) { showToast('Nombre y email son requeridos','error'); return; }
+  if (!name || !email) { showToast('Name and email are required','error'); return; }
   let r;
   if (id) {
     r = await fetch(`/admin/api/students/${id}`, { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,email}) });
   } else {
-    if (!password) { showToast('La contraseña es requerida','error'); return; }
+    if (!password) { showToast('Password is required','error'); return; }
     r = await fetch('/admin/api/students', { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({name,email,password}) });
   }
   const data = await r.json();
   if (r.ok) {
-    showToast(id ? 'Alumno actualizado' : 'Alumno agregado','success');
+    showToast(id ? 'Student updated' : 'Student added','success');
     closeModal();
     await loadStudents(); renderStudents();
     renderDashboard();
@@ -765,7 +765,7 @@ async function toggleSuspend(id) {
   const r = await fetch(`/admin/api/students/${id}/suspend`, { method:'POST', credentials:'include' });
   if (r.ok) {
     const data = await r.json();
-    showToast(data.is_suspended ? 'Alumno suspendido' : 'Alumno reactivado', 'success');
+    showToast(data.is_suspended ? 'Student suspended' : 'Student reactivated', 'success');
     await loadStudents(); renderStudents();
   } else showToast('Error','error');
 }
@@ -780,16 +780,16 @@ async function confirmDelete() {
   const r = await fetch(`/admin/api/students/${deleteTargetId}`, { method:'DELETE', credentials:'include' });
   document.getElementById('modal-delete').classList.remove('open');
   if (r.ok) {
-    showToast('Alumno eliminado','success');
+    showToast('Student deleted','success');
     await loadAll(); renderStudents(); renderDashboard();
-  } else showToast('Error al eliminar','error');
+  } else showToast('Error deleting','error');
 }
 
 // ── SUBMISSIONS ───────────────────────────
 function renderSubmissions() {
   const sel = document.getElementById('filter-student');
   const prev = sel.value;
-  sel.innerHTML = '<option value="">Todos los alumnos</option>' +
+  sel.innerHTML = '<option value="">All students</option>' +
     allStudents.map(s=>`<option value="${s.id}">${s.name}</option>`).join('');
   if (prev) sel.value = prev;
   filterSubs();
@@ -802,7 +802,7 @@ function filterSubs() {
   if (studentId) filtered = filtered.filter(s=>s.user_id==studentId);
   if (status) filtered = filtered.filter(s=>s.status===status);
   const el = document.getElementById('subs-container');
-  if (!filtered.length) { el.innerHTML='<div class="empty">No hay prácticas con esos filtros.</div>'; return; }
+  if (!filtered.length) { el.innerHTML='<div class="empty">No submissions match those filters.</div>'; return; }
   el.innerHTML = filtered.map(s=>`
     <div style="padding:18px 24px;border-bottom:1px solid rgba(0,0,0,.05)">
       <div style="display:flex;align-items:flex-start;gap:14px">
@@ -810,17 +810,17 @@ function filterSubs() {
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:5px">
             <strong style="font-size:14px">${s.student_name}</strong>
             <span style="font-size:11px;color:var(--gray);background:var(--bg);padding:3px 10px;border-radius:20px">${s.student_email}</span>
-            <span class="badge-${s.status}">${s.status==='reviewed'?'✓ Revisado':'⏳ Pendiente'}</span>
+            <span class="badge-${s.status}">${s.status==='reviewed'?'✓ Reviewed':'⏳ Pending'}</span>
           </div>
-          <div style="font-size:12px;color:var(--gray);margin-bottom:8px">Módulo ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('es-AR')}</div>
+          <div style="font-size:12px;color:var(--gray);margin-bottom:8px">Module ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('en-US')}</div>
           <div style="margin-bottom:10px"><a href="/uploads/${s.filename}" target="_blank" class="link-dl">📎 ${s.original_name}</a></div>
           ${s.notes?`<div style="font-size:12px;color:#555;padding:8px 12px;background:var(--bg);border-radius:8px;margin-bottom:10px;font-style:italic">"${s.notes}"</div>`:''}
           ${s.feedback?`<div style="font-size:12px;color:var(--cyan);padding:8px 12px;background:rgba(76,192,241,.06);border-radius:8px;margin-bottom:10px">💬 ${s.feedback}</div>`:''}
           <div style="display:flex;gap:8px;align-items:flex-start">
-            <textarea class="feedback-area" id="fb-${s.id}" placeholder="Escribí tu feedback...">${s.feedback||''}</textarea>
+            <textarea class="feedback-area" id="fb-${s.id}" placeholder="Write your feedback...">${s.feedback||''}</textarea>
             <div style="display:flex;flex-direction:column;gap:6px">
-              <button class="btn btn-gradient btn-sm" onclick="saveFeedback(${s.id})">Guardar</button>
-              <button class="status-btn badge-${s.status}" onclick="toggleStatus(${s.id})" title="Cambiar estado" style="text-align:center;padding:5px 10px">${s.status==='reviewed'?'✓ Corregido':'⏳ Pendiente'}</button>
+              <button class="btn btn-gradient btn-sm" onclick="saveFeedback(${s.id})">Save</button>
+              <button class="status-btn badge-${s.status}" onclick="toggleStatus(${s.id})" title="Change status" style="text-align:center;padding:5px 10px">${s.status==='reviewed'?'✓ Reviewed':'⏳ Pending'}</button>
             </div>
           </div>
         </div>
@@ -844,22 +844,24 @@ function renderModules() {
       <div style="display:flex;align-items:flex-start;gap:18px">
         <div style="font-size:26px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0;min-width:36px;text-align:center">${m.number}</div>
         <div style="flex:1;min-width:0">
-          <div style="font-size:14px;font-weight:700;margin-bottom:12px">${m.title} <span style="font-size:11px;font-weight:500;color:var(--gray)">(Mes ${m.month})</span></div>
+          <div style="font-size:14px;font-weight:700;margin-bottom:12px">${m.title} <span style="font-size:11px;font-weight:500;color:var(--gray)">(Month ${m.month})</span></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
             <div>
-              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">YouTube URL</div>
+              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Class video ${m.video_filename?'<span style="color:var(--cyan)">✓</span>':''}</div>
               <div class="form-inline">
-                <input type="text" id="vid-${m.id}" value="${m.video_url||''}" placeholder="https://youtube.com/watch?v=...">
-                <button class="btn btn-gradient btn-sm" onclick="saveVideo(${m.id})">OK</button>
+                <input type="file" id="vid-${m.id}" accept="video/mp4,video/quicktime,video/webm" style="flex:1;padding:6px;font-size:12px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;background:var(--bg)">
+                <button class="btn btn-gradient btn-sm" onclick="saveVideo(${m.id})">Upload</button>
               </div>
+              <div style="font-size:11px;color:var(--gray);margin-top:5px">Max. 10 min, MP4/MOV/WebM</div>
+              ${m.video_filename?`<div style="margin-top:5px"><a href="/module-content/${m.video_filename}" target="_blank" class="link-dl">View current video</a></div>`:''}
             </div>
             <div>
-              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">PDF del módulo ${m.pdf_filename?'<span style="color:var(--cyan)">✓</span>':''}</div>
+              <div style="font-size:11px;font-weight:700;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Module PDF ${m.pdf_filename?'<span style="color:var(--cyan)">✓</span>':''}</div>
               <div class="form-inline">
                 <input type="file" id="pdf-${m.id}" accept=".pdf" style="flex:1;padding:6px;font-size:12px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;background:var(--bg)">
-                <button class="btn btn-gradient btn-sm" onclick="savePdf(${m.id})">Subir</button>
+                <button class="btn btn-gradient btn-sm" onclick="savePdf(${m.id})">Upload</button>
               </div>
-              ${m.pdf_filename?`<div style="margin-top:5px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="link-dl">Ver PDF actual</a></div>`:''}
+              ${m.pdf_filename?`<div style="margin-top:5px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="link-dl">View current PDF</a></div>`:''}
             </div>
           </div>
         </div>
@@ -869,31 +871,33 @@ function renderModules() {
 }
 
 async function saveVideo(id) {
-  const url = document.getElementById('vid-'+id).value;
-  const r = await fetch(`/admin/api/module/${id}/video`, { method:'POST', credentials:'include', headers:{'Content-Type':'application/json'}, body:JSON.stringify({video_url:url}) });
-  if (r.ok) { showToast('Video guardado','success'); const m=allModules.find(x=>x.id===id); if(m) m.video_url=url; }
-  else showToast('Error','error');
+  const input = document.getElementById('vid-'+id);
+  if (!input.files[0]) { showToast('Select a video file','error'); return; }
+  const fd = new FormData(); fd.append('video', input.files[0]);
+  const r = await fetch(`/admin/api/module/${id}/video`, { method:'POST', credentials:'include', body:fd });
+  if (r.ok) { showToast('Video uploaded','success'); await loadModules(); renderModules(); }
+  else showToast('Error uploading video','error');
 }
 
 async function savePdf(id) {
   const input = document.getElementById('pdf-'+id);
-  if (!input.files[0]) { showToast('Seleccioná un PDF','error'); return; }
+  if (!input.files[0]) { showToast('Select a PDF','error'); return; }
   const fd = new FormData(); fd.append('pdf', input.files[0]);
   const r = await fetch(`/admin/api/module/${id}/pdf`, { method:'POST', credentials:'include', body:fd });
-  if (r.ok) { showToast('PDF subido','success'); await loadModules(); renderModules(); }
-  else showToast('Error al subir PDF','error');
+  if (r.ok) { showToast('PDF uploaded','success'); await loadModules(); renderModules(); }
+  else showToast('Error uploading PDF','error');
 }
 
 // ── RESOURCES ────────────────────────────
 async function uploadResource() {
   const title = document.getElementById('res-title').value;
   const file = document.getElementById('res-file').files[0];
-  if (!title) { showToast('Ingresá un título','error'); return; }
-  if (!file) { showToast('Seleccioná un archivo','error'); return; }
+  if (!title) { showToast('Enter a title','error'); return; }
+  if (!file) { showToast('Select a file','error'); return; }
   const fd = new FormData(); fd.append('title',title); fd.append('file',file);
   const r = await fetch('/admin/api/resources', { method:'POST', credentials:'include', body:fd });
   if (r.ok) {
-    showToast('Recurso subido','success');
+    showToast('Resource uploaded','success');
     document.getElementById('res-title').value='';
     document.getElementById('res-file').value='';
     document.getElementById('res-file-name').textContent='';
@@ -903,13 +907,13 @@ async function uploadResource() {
 
 function renderResources(list) {
   const el = document.getElementById('res-list');
-  if (!list||!list.length) { el.innerHTML='<div class="empty">No hay recursos todavía.</div>'; return; }
+  if (!list||!list.length) { el.innerHTML='<div class="empty">No resources yet.</div>'; return; }
   const colors={PDF:'var(--magenta)',DOC:'var(--cyan)',XLS:'#2da870'};
   el.innerHTML=list.map(r=>`
     <div style="display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(0,0,0,.05)">
       <div style="width:38px;height:38px;border-radius:8px;background:rgba(0,0,0,.04);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:${colors[r.file_type]||'var(--gray)'};flex-shrink:0">${r.file_type}</div>
-      <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.title}</div><div style="font-size:11px;color:var(--gray)">${new Date(r.created_at).toLocaleDateString('es-AR')}</div></div>
-      <a href="/resources/${r.filename}" target="_blank" class="btn btn-sm btn-gradient" style="text-decoration:none">Ver</a>
+      <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.title}</div><div style="font-size:11px;color:var(--gray)">${new Date(r.created_at).toLocaleDateString('en-US')}</div></div>
+      <a href="/resources/${r.filename}" target="_blank" class="btn btn-sm btn-gradient" style="text-decoration:none">View</a>
     </div>
   `).join('');
 }

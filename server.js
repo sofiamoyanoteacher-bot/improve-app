@@ -38,6 +38,7 @@ const uploadVideo = multer({ storage: submissionStorage, limits: { fileSize: 500
 const uploadProfilePhoto = multer({ storage: profileStorage, limits: { fileSize: 10 * 1024 * 1024 } });
 const uploadResource = multer({ storage: resourceStorage, limits: { fileSize: 500 * 1024 * 1024 } });
 const uploadModulePdf = multer({ storage: moduleContentStorage, limits: { fileSize: 500 * 1024 * 1024 } });
+const uploadModuleVideo = multer({ storage: moduleContentStorage, limits: { fileSize: 500 * 1024 * 1024 } });
 
 // Middleware
 app.use(express.json());
@@ -198,11 +199,11 @@ app.post('/admin/api/submissions/:id/status', requireTeacher, async (req, res) =
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post('/admin/api/module/:id/video', requireTeacher, async (req, res) => {
-  const { video_url } = req.body;
+app.post('/admin/api/module/:id/video', requireTeacher, uploadModuleVideo.single('video'), async (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
   try {
-    await pool.query('UPDATE modules SET video_url = $1 WHERE id = $2', [video_url, req.params.id]);
-    res.json({ ok: true });
+    await pool.query('UPDATE modules SET video_filename = $1 WHERE id = $2', [req.file.filename, req.params.id]);
+    res.json({ ok: true, filename: req.file.filename });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }

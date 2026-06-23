@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -389,11 +389,11 @@
       <div class="brand">IMPROVE</div>
       <div class="sub">Ingles IMPROVE Language School</div>
     </div>
-    <h1>Bienvenido</h1>
-    <p class="sub">Accedé a tu programa de inglés profesional</p>
+    <h1>Welcome</h1>
+    <p class="sub">Access your professional English program</p>
     <div class="form-group"><label>Email</label><input type="email" id="login-email" placeholder="tu@email.com"/></div>
-    <div class="form-group"><label>Contraseña</label><input type="password" id="login-pass" placeholder="••••••••"/></div>
-    <button class="btn-login" onclick="doLogin()">Ingresar</button>
+    <div class="form-group"><label>Password</label><input type="password" id="login-pass" placeholder="••••••••"/></div>
+    <button class="btn-login" onclick="doLogin()">Log in</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
@@ -421,7 +421,7 @@
         <div>
           <div class="user-name" id="sidebar-name">...</div>
           <div class="user-role">High-Value Professional</div>
-          <div class="user-edit-hint">Editar perfil →</div>
+          <div class="user-edit-hint">Edit profile →</div>
         </div>
       </button>
     </div>
@@ -432,7 +432,7 @@
       </div>
       <div class="nav-item" id="nav-profile" onclick="showPage('profile',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/></svg>
-        Mi perfil
+        My Profile
       </div>
       <div class="nav-item" id="nav-modules" onclick="showPage('modules',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg>
@@ -441,22 +441,22 @@
       </div>
       <div class="nav-item" id="nav-progress" onclick="showPage('progress',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg>
-        Mi progreso
+        My Progress
       </div>
       <div class="nav-item" id="nav-upload" onclick="showPage('upload',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg>
-        Prácticas subidas
+        Submitted Practice
         <span class="nav-badge" id="subs-badge">0</span>
       </div>
       <div class="nav-item" id="nav-resources" onclick="showPage('resources',this)">
         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg>
-        Material de apoyo
+        Resources
       </div>
     </nav>
     <div class="sidebar-bottom">
       <button class="btn-logout" onclick="doLogout()">
         <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clip-rule="evenodd"/></svg>
-        Cerrar sesión
+        Log out
       </button>
     </div>
   </aside>
@@ -465,10 +465,10 @@
   <main class="main" id="main">
     <div class="topbar">
       <div class="topbar-left">
-        <button class="toggle-btn" onclick="toggleSidebar()" title="Mostrar/ocultar menú">
+        <button class="toggle-btn" onclick="toggleSidebar()" title="Show/hide menu">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/></svg>
         </button>
-        <div class="topbar-title" id="topbar-title">Inicio</div>
+        <div class="topbar-title" id="topbar-title">Home</div>
       </div>
       <div class="topbar-right">
         <button class="icon-btn">
@@ -483,9 +483,9 @@
     <!-- HOME -->
     <div id="page-home" class="page active">
       <div class="hero-banner">
-        <div class="hero-label">Ingles IMPROVE — Programa Intensivo</div>
+        <div class="hero-label">Ingles IMPROVE — Intensive Program</div>
         <h2>The High-Value<br>Professional</h2>
-        <p>Transformá tu inglés en una ventaja competitiva real. 24 módulos diseñados para ejecutivos, consultores y profesionales de alto rendimiento.</p>
+        <p>Turn your English into a real competitive edge. 24 modules designed for executives, consultants, and high-performing professionals.</p>
         <div class="hero-quote">
           <p>"Your language is your currency. Master it and the world negotiates with you, not around you."</p>
           <div class="hero-quote-sig">
@@ -520,47 +520,47 @@
       <div class="stats-row" id="home-stats">
         <div class="stat-card clickable" onclick="showPage('modules', document.getElementById('nav-modules'))">
           <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg></div>
-          <div class="stat-label">Clases disponibles</div>
+          <div class="stat-label">Classes available</div>
           <div class="stat-value" id="stat-done">—</div>
-          <div class="stat-sub">de 24 módulos</div>
+          <div class="stat-sub">of 24 modules</div>
         </div>
         <div class="stat-card clickable" onclick="showPage('progress', document.getElementById('nav-progress'))">
           <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"/></svg></div>
-          <div class="stat-label">Clases restantes</div>
+          <div class="stat-label">Classes remaining</div>
           <div class="stat-value" id="stat-left">—</div>
-          <div class="stat-sub">por completar</div>
+          <div class="stat-sub">to complete</div>
         </div>
         <div class="stat-card clickable" onclick="showPage('upload', document.getElementById('nav-upload'))">
           <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg></div>
-          <div class="stat-label">Prácticas enviadas</div>
+          <div class="stat-label">Submissions sent</div>
           <div class="stat-value" id="stat-subs">—</div>
-          <div class="stat-sub">en total</div>
+          <div class="stat-sub">in total</div>
         </div>
         <div class="stat-card clickable" onclick="showPage('progress', document.getElementById('nav-progress'))">
           <div class="stat-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></div>
-          <div class="stat-label">Progreso total</div>
+          <div class="stat-label">Total progress</div>
           <div class="stat-value" id="stat-pct">—</div>
-          <div class="stat-sub">del programa</div>
+          <div class="stat-sub">of the program</div>
         </div>
       </div>
 
-      <div class="section-title" style="color:white;margin-bottom:14px">Acceso rápido</div>
+      <div class="section-title" style="color:white;margin-bottom:14px">Quick access</div>
       <div class="quick-nav" style="margin-bottom:28px">
         <div class="quick-card" onclick="showPage('modules', document.getElementById('nav-modules'))">
           <div class="quick-card-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="white"><path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.468 0 2.834.41 4 1.125V4.804zM10 14c1.166-.715 2.532-1.125 4-1.125a7.97 7.97 0 013.5.804v-10A7.969 7.969 0 0014.5 4c-1.255 0-2.443.29-3.5.804V14z"/></svg></div>
-          <div><h4>Ver Programa</h4><p>Los 24 módulos del curso</p></div>
+          <div><h4>View Program</h4><p>The 24 course modules</p></div>
         </div>
         <div class="quick-card" onclick="showPage('upload', document.getElementById('nav-upload'))">
           <div class="quick-card-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/></svg></div>
-          <div><h4>Subir práctica</h4><p>Enviá tu video al profesor</p></div>
+          <div><h4>Submit practice</h4><p>Send your video to the teacher</p></div>
         </div>
         <div class="quick-card" onclick="showPage('resources', document.getElementById('nav-resources'))">
           <div class="quick-card-icon"><svg width="22" height="22" viewBox="0 0 20 20" fill="white"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg></div>
-          <div><h4>Material de apoyo</h4><p>PDFs y recursos del curso</p></div>
+          <div><h4>Resources</h4><p>PDFs and course resources</p></div>
         </div>
       </div>
 
-      <div class="section-title" style="color:white;margin-bottom:14px">Próximos módulos</div>
+      <div class="section-title" style="color:white;margin-bottom:14px">Upcoming modules</div>
       <div class="next-modules" id="next-modules"></div>
     </div>
 
@@ -578,41 +578,41 @@
         </div>
         <div>
           <div class="profile-name" id="profile-display-name">...</div>
-          <div class="profile-role-badge" id="profile-display-role">Alumno</div>
+          <div class="profile-role-badge" id="profile-display-role">Student</div>
           <div class="profile-profession" id="profile-display-profession"></div>
         </div>
       </div>
       <div class="card">
-        <div class="section-title">Editar información</div>
+        <div class="section-title">Edit information</div>
         <div class="profile-form-grid">
           <div class="profile-form-group">
-            <label>Nombre completo</label>
-            <input type="text" id="pf-name" placeholder="Tu nombre">
+            <label>Full name</label>
+            <input type="text" id="pf-name" placeholder="Your name">
           </div>
           <div class="profile-form-group">
             <label>Email</label>
             <input type="text" id="pf-email" placeholder="tu@email.com">
           </div>
           <div class="profile-form-group">
-            <label>Edad</label>
-            <input type="text" id="pf-age" placeholder="Ej: 32">
+            <label>Age</label>
+            <input type="text" id="pf-age" placeholder="E.g.: 32">
           </div>
           <div class="profile-form-group">
-            <label>Profesión / Trabajo</label>
-            <input type="text" id="pf-profession" placeholder="Ej: Gerente de Ventas, Consultora...">
+            <label>Profession / Job</label>
+            <input type="text" id="pf-profession" placeholder="E.g.: Sales Manager, Consultant...">
           </div>
         </div>
-        <button class="btn-action btn-gradient" style="margin-top:20px;padding:13px 32px;font-size:14px" onclick="saveProfile()">Guardar cambios</button>
+        <button class="btn-action btn-gradient" style="margin-top:20px;padding:13px 32px;font-size:14px" onclick="saveProfile()">Save changes</button>
       </div>
     </div>
 
     <!-- MODULES -->
     <div id="page-modules" class="page">
       <div class="filter-pills">
-        <div class="pill active" onclick="filterModules('all',this)">Todos</div>
-        <div class="pill" onclick="filterModules(1,this)">Mes 1 — Foundation</div>
-        <div class="pill" onclick="filterModules(2,this)">Mes 2 — Interview</div>
-        <div class="pill" onclick="filterModules(3,this)">Mes 3 — Neurosales</div>
+        <div class="pill active" onclick="filterModules('all',this)">All</div>
+        <div class="pill" onclick="filterModules(1,this)">Month 1 — Foundation</div>
+        <div class="pill" onclick="filterModules(2,this)">Month 2 — Interview</div>
+        <div class="pill" onclick="filterModules(3,this)">Month 3 — Neurosales</div>
       </div>
       <div id="modules-list"></div>
     </div>
@@ -620,50 +620,50 @@
     <!-- UPLOAD -->
     <div id="page-upload" class="page">
       <div class="card" style="margin-bottom:20px">
-        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">¿Cómo funciona?</h3>
-        <p style="font-size:13px;color:var(--gray);line-height:1.7">Subí tu práctica en video (MP4, MOV, WebM) o en texto para los módulos que lo requieran. Tu profesor revisará la entrega y te dará feedback personalizado.</p>
+        <h3 style="font-size:15px;font-weight:700;margin-bottom:8px">How does it work?</h3>
+        <p style="font-size:13px;color:var(--gray);line-height:1.7">Upload your video practice (MP4, MOV, WebM) for the modules that require it. Your teacher will review your submission and give you personalized feedback.</p>
       </div>
       <div class="upload-zone" id="drop-zone" onclick="document.getElementById('file-input').click()">
         <div class="upload-icon">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
         </div>
-        <h3>Arrastrá tu archivo aquí</h3>
-        <p>o hacé click para <a>buscar en tu equipo</a></p>
+        <h3>Drag your file here</h3>
+        <p>or click to <a>browse your computer</a></p>
         <p style="margin-top:8px;font-size:12px;color:var(--gray)">Máx. 500MB — MP4, MOV, WebM, PDF, DOC</p>
       </div>
       <input type="file" id="file-input" onchange="fileSelected(this)">
       <div class="selected-file" id="selected-file-info"></div>
       <form class="upload-form" onsubmit="submitPractice(event)">
         <div class="form-row">
-          <label>Módulo de práctica</label>
-          <select id="upload-module" required><option value="">Seleccioná un módulo...</option></select>
+          <label>Practice module</label>
+          <select id="upload-module" required><option value="">Select a module...</option></select>
         </div>
         <div class="form-row">
-          <label>Nombre de la práctica</label>
-          <input type="text" id="upload-name" placeholder="Ej: Elevator pitch — intento 1" required>
+          <label>Practice name</label>
+          <input type="text" id="upload-name" placeholder="E.g.: Elevator pitch — attempt 1" required>
         </div>
         <div class="form-row">
-          <label>Notas para el profesor (opcional)</label>
-          <textarea id="upload-notes" placeholder="Contale al profe en qué trabajaste o qué dudas tenés..."></textarea>
+          <label>Notes for the teacher (optional)</label>
+          <textarea id="upload-notes" placeholder="Tell your teacher what you worked on or any questions you have..."></textarea>
         </div>
-        <button type="submit" class="btn-action btn-gradient" style="padding:13px 32px;font-size:14px">Enviar práctica</button>
+        <button type="submit" class="btn-action btn-gradient" style="padding:13px 32px;font-size:14px">Submit practice</button>
       </form>
-      <div class="section-title" style="color:white">Mis prácticas enviadas</div>
+      <div class="section-title" style="color:white">My submitted practice</div>
       <div class="submissions-list" id="subs-list">
-        <div class="empty-state"><p>Todavía no enviaste ninguna práctica.</p></div>
+        <div class="empty-state"><p>You have not submitted any practice yet.</p></div>
       </div>
     </div>
 
     <!-- PROGRESS -->
     <div id="page-progress" class="page">
       <div class="stats-row">
-        <div class="stat-card"><div class="stat-label">Completados</div><div class="stat-value" id="p-done">—</div><div class="stat-sub">de 24</div></div>
-        <div class="stat-card"><div class="stat-label">Mes actual</div><div class="stat-value" id="p-month">—</div><div class="stat-sub">del programa</div></div>
-        <div class="stat-card"><div class="stat-label">Próxima clase</div><div class="stat-value" id="p-next" style="font-size:14px;line-height:1.3">—</div></div>
-        <div class="stat-card"><div class="stat-label">Prácticas enviadas</div><div class="stat-value" id="p-subs">—</div></div>
+        <div class="stat-card"><div class="stat-label">Completed</div><div class="stat-value" id="p-done">—</div><div class="stat-sub">of 24</div></div>
+        <div class="stat-card"><div class="stat-label">Current month</div><div class="stat-value" id="p-month">—</div><div class="stat-sub">of the program</div></div>
+        <div class="stat-card"><div class="stat-label">Next class</div><div class="stat-value" id="p-next" style="font-size:14px;line-height:1.3">—</div></div>
+        <div class="stat-card"><div class="stat-label">Submissions sent</div><div class="stat-value" id="p-subs">—</div></div>
       </div>
       <div class="card">
-        <div class="section-title">Línea de tiempo del programa</div>
+        <div class="section-title">Program timeline</div>
         <div class="timeline" id="timeline"></div>
       </div>
     </div>
@@ -671,8 +671,8 @@
     <!-- RESOURCES -->
     <div id="page-resources" class="page">
       <div class="card">
-        <div class="section-title">Material de apoyo</div>
-        <div id="resources-list"><div class="empty-state"><p>No hay material disponible todavía.</p></div></div>
+        <div class="section-title">Resources</div>
+        <div id="resources-list"><div class="empty-state"><p>No resources available yet.</p></div></div>
       </div>
     </div>
   </main>
@@ -693,7 +693,7 @@ const MONTH_IMAGES = {
   2: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=800&q=80',
   3: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=800&q=80',
 };
-const MONTH_LABELS = { 1:'Mes 1 — The Foundation', 2:'Mes 2 — Elite Candidate', 3:'Mes 3 — Neurosales' };
+const MONTH_LABELS = { 1:'Mes 1 — The Foundation', 2:'Mes 2 — Elite Candidate', 3:'Month 3 — Neurosales' };
 
 // ── INIT ──────────────────────────────────
 async function init() {
@@ -780,7 +780,7 @@ async function doLogin() {
     currentUser = data;
     if (data.role === 'teacher') { window.location.href = '/admin'; return; }
     await showApp();
-  } catch { errEl.textContent = 'Error de conexión'; errEl.style.display = 'block'; }
+  } catch { errEl.textContent = 'Connection error'; errEl.style.display = 'block'; }
 }
 document.getElementById('login-pass').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
 document.getElementById('login-email').addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
@@ -798,7 +798,7 @@ function toggleSidebar() {
 }
 
 // ── NAVIGATION ────────────────────────────
-const pageTitles = { home:'Inicio', profile:'Mi perfil', modules:'Programa', progress:'Mi progreso', upload:'Prácticas subidas', resources:'Material de apoyo' };
+const pageTitles = { home:'Inicio', profile:'My Profile', modules:'Programa', progress:'My Progress', upload:'Submitted Practice', resources:'Resources' };
 
 function showPage(name, el) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -827,7 +827,7 @@ async function loadProfile() {
   document.getElementById('pf-profession').value = data.profession || '';
   document.getElementById('profile-display-name').textContent = data.name || '';
   document.getElementById('profile-display-role').textContent = data.role === 'teacher' ? 'Profesor' : 'Alumno';
-  document.getElementById('profile-display-profession').textContent = data.profession || 'Completá tu perfil';
+  document.getElementById('profile-display-profession').textContent = data.profession || 'Complete your profile';
 
   const photoEl = document.getElementById('profile-photo-display');
   if (data.photo) {
@@ -847,11 +847,11 @@ async function saveProfile() {
   };
   const r = await fetch('/api/profile', { method:'PUT', credentials:'include', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
   if (r.ok) {
-    showToast('Perfil actualizado', 'success');
+    showToast('Profile updated', 'success');
     currentUser.name = body.name;
     updateAvatarUI(body);
     loadProfile();
-  } else { showToast('Error al guardar', 'error'); }
+  } else { showToast('Error saving', 'error'); }
 }
 
 async function uploadProfilePhoto(input) {
@@ -861,12 +861,12 @@ async function uploadProfilePhoto(input) {
   const r = await fetch('/api/profile/photo', { method:'POST', credentials:'include', body: fd });
   if (r.ok) {
     const data = await r.json();
-    showToast('Foto actualizada', 'success');
+    showToast('Photo updated', 'success');
     const src = `/profiles/${data.filename}`;
     document.getElementById('profile-photo-display').innerHTML = `<img src="${src}" alt="foto">`;
     document.getElementById('sidebar-avatar-wrap').innerHTML = `<img src="${src}" alt="foto">`;
     document.getElementById('topbar-avatar-btn').innerHTML = `<img src="${src}" alt="foto">`;
-  } else { showToast('Error al subir foto', 'error'); }
+  } else { showToast('Error uploading photo', 'error'); }
 }
 
 // ── HOME ──────────────────────────────────
@@ -880,7 +880,7 @@ function renderHome() {
   const next3 = allModules.filter(m => m.is_unlocked).slice(-3);
   document.getElementById('next-modules').innerHTML = next3.map(m => `
     <div class="next-card">
-      <div class="next-card-label">Módulo ${m.number}</div>
+      <div class="next-card-label">Module ${m.number}</div>
       <h4>${m.title}</h4>
       <div class="progress-bar-wrap"><div class="progress-bar" style="width:${Math.min(100,(m.number/24)*100)}%"></div></div>
     </div>
@@ -899,37 +899,37 @@ function filterModules(filter, el) {
 function renderModules() {
   const filtered = currentFilter === 'all' ? allModules : allModules.filter(m => m.month == currentFilter);
   const container = document.getElementById('modules-list');
-  if (!filtered.length) { container.innerHTML = '<div class="empty-state" style="color:white"><p>No hay módulos en esta categoría.</p></div>'; return; }
+  if (!filtered.length) { container.innerHTML = '<div class="empty-state" style="color:white"><p>No modules in this category.</p></div>'; return; }
   container.innerHTML = filtered.map(m => buildModuleCard(m)).join('');
 }
 
 function buildModuleCard(m) {
   const chips = [];
-  if (m.video_url) chips.push('<span class="chip chip-video">▶ Video</span>');
-  chips.push('<span class="chip chip-text">📄 Contenido</span>');
-  if (m.practice_instructions) chips.push('<span class="chip chip-practice">🎯 Práctica</span>');
+  if (m.video_filename) chips.push('<span class="chip chip-video">▶ Video</span>');
+  chips.push('<span class="chip chip-text">📄 Content</span>');
+  if (m.practice_instructions) chips.push('<span class="chip chip-practice">🎯 Practice</span>');
 
   let body = '';
   if (m.is_unlocked) {
     const img = MONTH_IMAGES[m.month];
     body = `
       <div class="month-banner">
-        <img src="${img}" alt="Mes ${m.month}" loading="lazy">
+        <img src="${img}" alt="Month ${m.month}" loading="lazy">
         <div class="month-banner-label">
           <span>${MONTH_LABELS[m.month]}</span>
-          <p>Módulo ${m.number} de 24</p>
+          <p>Module ${m.number} of 24</p>
         </div>
       </div>
       <p>${m.description || ''}</p>
-      ${m.practice_instructions ? `<div class="practice-box"><strong>🎯 Práctica</strong><p>${m.practice_instructions}</p></div>` : ''}
-      ${m.video_url ? `<div class="mod-video-wrap"><iframe src="${toEmbedUrl(m.video_url)}" allowfullscreen></iframe></div>` : ''}
-      ${m.pdf_filename ? `<div style="margin-top:12px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="btn-action btn-outline" style="font-size:12px;padding:8px 16px;display:inline-block;text-decoration:none">📥 Descargar PDF del módulo</a></div>` : ''}
+      ${m.practice_instructions ? `<div class="practice-box"><strong>🎯 Practice</strong><p>${m.practice_instructions}</p></div>` : ''}
+      ${m.video_filename ? `<div class="mod-video-wrap"><video src="/module-content/${m.video_filename}" controls preload="metadata" style="width:100%;height:100%;background:#000"></video></div>` : ''}
+      ${m.pdf_filename ? `<div style="margin-top:12px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="btn-action btn-outline" style="font-size:12px;padding:8px 16px;display:inline-block;text-decoration:none">📥 Download module PDF</a></div>` : ''}
       <div class="module-actions">
-        ${m.practice_instructions ? `<button class="btn-action btn-gradient" onclick="event.stopPropagation();showPage('upload',document.getElementById('nav-upload'));setTimeout(()=>document.getElementById('upload-module').value=${m.id},100)">Subir práctica</button>` : ''}
+        ${m.practice_instructions ? `<button class="btn-action btn-gradient" onclick="event.stopPropagation();showPage('upload',document.getElementById('nav-upload'));setTimeout(()=>document.getElementById('upload-module').value=${m.id},100)">Submit practice</button>` : ''}
       </div>
     `;
   } else {
-    body = `<div class="locked-msg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Este módulo se desbloquea cuando el profesor lo habilite.</div>`;
+    body = `<div class="locked-msg"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>This module unlocks when your teacher enables it.</div>`;
   }
 
   return `
@@ -953,12 +953,6 @@ function buildModuleCard(m) {
 
 function toggleModule(id) { document.getElementById('mc-' + id).classList.toggle('open'); }
 
-function toEmbedUrl(url) {
-  if (!url) return '';
-  const m = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/);
-  return m ? `https://www.youtube.com/embed/${m[1]}` : url;
-}
-
 // ── UPLOAD ───────────────────────────────
 const dropZone = document.getElementById('drop-zone');
 dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag-over'); });
@@ -975,49 +969,49 @@ function setFile(file) {
 function renderUploadSelect() {
   const sel = document.getElementById('upload-module');
   const prev = sel.value;
-  sel.innerHTML = '<option value="">Seleccioná un módulo...</option>' +
-    allModules.filter(m => m.is_unlocked && m.practice_instructions).map(m => `<option value="${m.id}">Módulo ${m.number} — ${m.title}</option>`).join('');
+  sel.innerHTML = '<option value="">Select a module...</option>' +
+    allModules.filter(m => m.is_unlocked && m.practice_instructions).map(m => `<option value="${m.id}">Module ${m.number} — ${m.title}</option>`).join('');
   if (prev) sel.value = prev;
 }
 
 async function submitPractice(e) {
   e.preventDefault();
-  if (!selectedFile) { showToast('Seleccioná un archivo primero', 'error'); return; }
+  if (!selectedFile) { showToast('Select a file first', 'error'); return; }
   const moduleId = document.getElementById('upload-module').value;
-  if (!moduleId) { showToast('Seleccioná un módulo', 'error'); return; }
+  if (!moduleId) { showToast('Select a module', 'error'); return; }
   const fd = new FormData();
   fd.append('video', selectedFile);
   fd.append('module_id', moduleId);
   fd.append('notes', document.getElementById('upload-notes').value);
   const btn = e.target.querySelector('button[type=submit]');
-  btn.textContent = 'Subiendo...'; btn.disabled = true;
+  btn.textContent = 'Uploading...'; btn.disabled = true;
   try {
     const r = await fetch('/api/submissions', { method:'POST', credentials:'include', body: fd });
     const data = await r.json();
     if (!r.ok) { showToast(data.error, 'error'); } else {
-      showToast('Práctica enviada', 'success');
+      showToast('Practice submitted', 'success');
       selectedFile = null;
       document.getElementById('selected-file-info').style.display = 'none';
       document.getElementById('file-input').value = '';
       document.getElementById('upload-notes').value = '';
       await loadSubmissions();
     }
-  } catch { showToast('Error al subir', 'error'); }
-  btn.textContent = 'Enviar práctica'; btn.disabled = false;
+  } catch { showToast('Error uploading', 'error'); }
+  btn.textContent = 'Submit practice'; btn.disabled = false;
 }
 
 function renderSubmissions() {
   const list = document.getElementById('subs-list');
-  if (!mySubmissions.length) { list.innerHTML = '<div class="empty-state"><p>Todavía no enviaste ninguna práctica.</p></div>'; return; }
+  if (!mySubmissions.length) { list.innerHTML = '<div class="empty-state"><p>You have not submitted any practice yet.</p></div>'; return; }
   list.innerHTML = mySubmissions.map(s => `
     <div class="submission-row">
       <div class="sub-thumb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
       <div class="sub-info">
         <div class="sub-name">${s.original_name}</div>
-        <div class="sub-meta">Módulo ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('es-AR')}</div>
+        <div class="sub-meta">Module ${s.module_number} — ${s.module_title} · ${new Date(s.created_at).toLocaleDateString('en-US')}</div>
         ${s.feedback ? `<div class="sub-feedback">💬 ${s.feedback}</div>` : ''}
       </div>
-      <span class="${s.status === 'reviewed' ? 'status-reviewed' : 'status-pending'}">${s.status === 'reviewed' ? '✓ Revisado' : '⏳ Pendiente'}</span>
+      <span class="${s.status === 'reviewed' ? 'status-reviewed' : 'status-pending'}">${s.status === 'reviewed' ? '✓ Reviewed' : '⏳ Pending'}</span>
     </div>
   `).join('');
 }
@@ -1041,7 +1035,7 @@ function renderTimeline() {
         </div>
         <div class="tl-content">
           <div class="tl-title">${m.title}</div>
-          <div class="tl-sub">Módulo ${m.number} · ${MONTH_LABELS[m.month]}</div>
+          <div class="tl-sub">Module ${m.number} · ${MONTH_LABELS[m.month]}</div>
         </div>
       </div>
     `;
@@ -1051,12 +1045,12 @@ function renderTimeline() {
 // ── RESOURCES ────────────────────────────
 function renderResources(list) {
   const el = document.getElementById('resources-list');
-  if (!list || !list.length) { el.innerHTML = '<div class="empty-state"><p>No hay material disponible todavía.</p></div>'; return; }
+  if (!list || !list.length) { el.innerHTML = '<div class="empty-state"><p>No resources available yet.</p></div>'; return; }
   el.innerHTML = list.map(r => `
     <div class="resource-row">
       <div class="file-type-badge badge-${(r.file_type||'').toLowerCase()}">${r.file_type}</div>
       <div class="resource-name">${r.title}</div>
-      <a href="/resources/${r.filename}" target="_blank" class="btn-download">Descargar</a>
+      <a href="/resources/${r.filename}" target="_blank" class="btn-download">Download</a>
     </div>
   `).join('');
 }
