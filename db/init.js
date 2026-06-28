@@ -78,6 +78,7 @@ async function initDB() {
       ALTER TABLE modules ADD COLUMN IF NOT EXISTS video_url VARCHAR(500);
       ALTER TABLE modules ADD COLUMN IF NOT EXISTS pdf_filename VARCHAR(255);
       ALTER TABLE modules ADD COLUMN IF NOT EXISTS video_filename VARCHAR(255);
+      ALTER TABLE modules ADD COLUMN IF NOT EXISTS video_filename_2 VARCHAR(255);
       ALTER TABLE modules ADD COLUMN IF NOT EXISTS is_unlocked BOOLEAN DEFAULT FALSE;
     `);
 

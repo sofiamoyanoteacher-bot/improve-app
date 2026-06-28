@@ -912,7 +912,9 @@ function renderModules() {
 
 function buildModuleCard(m) {
   const chips = [];
-  if (m.video_filename) chips.push('<span class="chip chip-video">▶ Video</span>');
+  const videoCount = (m.video_filename ? 1 : 0) + (m.video_filename_2 ? 1 : 0);
+  if (videoCount === 1) chips.push('<span class="chip chip-video">▶ Video</span>');
+  if (videoCount === 2) chips.push('<span class="chip chip-video">▶ 2 Videos</span>');
   chips.push('<span class="chip chip-text">📄 Content</span>');
   if (m.practice_instructions) chips.push('<span class="chip chip-practice">🎯 Practice</span>');
 
@@ -930,6 +932,7 @@ function buildModuleCard(m) {
       <p>${m.description || ''}</p>
       ${m.practice_instructions ? `<div class="practice-box"><strong>🎯 Practice</strong><p>${m.practice_instructions}</p></div>` : ''}
       ${m.video_filename ? `<div class="mod-video-wrap"><video src="/module-content/${m.video_filename}" controls preload="metadata" style="width:100%;height:100%;background:#000"></video></div>` : ''}
+      ${m.video_filename_2 ? `<div class="mod-video-wrap" style="margin-top:10px"><video src="/module-content/${m.video_filename_2}" controls preload="metadata" style="width:100%;height:100%;background:#000"></video></div>` : ''}
       ${m.pdf_filename ? `<div style="margin-top:12px"><a href="/module-content/${m.pdf_filename}" target="_blank" class="btn-action btn-outline" style="font-size:12px;padding:8px 16px;display:inline-block;text-decoration:none">📥 Download module PDF</a></div>` : ''}
       <div class="module-actions">
         ${m.practice_instructions ? `<button class="btn-action btn-gradient" onclick="event.stopPropagation();showPage('upload',document.getElementById('nav-upload'));setTimeout(()=>document.getElementById('upload-module').value=${m.id},100)">Submit practice</button>` : ''}

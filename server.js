@@ -227,10 +227,11 @@ app.post('/admin/api/submissions/:id/status', requireTeacher, async (req, res) =
   } catch (e) { res.status(500).json({ error: e.message }); }
 });
 
-app.post('/admin/api/module/:id/video', requireTeacher, uploadModuleVideo.single('video'), async (req, res) => {
+app.post('/admin/api/module/:id/video/:slot', requireTeacher, uploadModuleVideo.single('video'), async (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No file uploaded' });
+  const slot = req.params.slot === '2' ? 'video_filename_2' : 'video_filename';
   try {
-    await pool.query('UPDATE modules SET video_filename = $1 WHERE id = $2', [req.file.filename, req.params.id]);
+    await pool.query(`UPDATE modules SET ${slot} = $1 WHERE id = $2`, [req.file.filename, req.params.id]);
     res.json({ ok: true, filename: req.file.filename });
   } catch (e) {
     res.status(500).json({ error: e.message });
