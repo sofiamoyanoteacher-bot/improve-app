@@ -331,13 +331,15 @@ app.get('/admin/api/students/:id/modules', requireTeacher, async (req, res) => {
 
 app.post('/admin/api/students/:id/module/:moduleId/toggle', requireTeacher, async (req, res) => {
   try {
+    // Receive explicit desired state from client to avoid double-toggle corruption
+    const desired = req.body.is_unlocked === true || req.body.is_unlocked === 'true';
     const result = await pool.query(
       `INSERT INTO student_module_access (user_id, module_id, is_unlocked)
-       VALUES ($1, $2, TRUE)
+       VALUES ($1, $2, $3)
        ON CONFLICT (user_id, module_id)
-       DO UPDATE SET is_unlocked = NOT student_module_access.is_unlocked
+       DO UPDATE SET is_unlocked = $3
        RETURNING is_unlocked`,
-      [req.params.id, req.params.moduleId]
+      [req.params.id, req.params.moduleId, desired]
     );
     res.json({ is_unlocked: result.rows[0].is_unlocked });
   } catch (e) { res.status(500).json({ error: e.message }); }

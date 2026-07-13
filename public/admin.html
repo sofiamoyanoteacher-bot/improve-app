@@ -696,14 +696,19 @@ async function loadStudentModules(userId) {
 }
 
 async function toggleStudentModule(userId, moduleId, checkbox) {
-  const r = await fetch(`/admin/api/students/${userId}/module/${moduleId}/toggle`, { method:'POST', credentials:'include' });
+  const desired = checkbox.checked;
+  const r = await fetch(`/admin/api/students/${userId}/module/${moduleId}/toggle`, {
+    method:'POST', credentials:'include',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({ is_unlocked: desired })
+  });
   if (r.ok) {
     const data = await r.json();
     checkbox.checked = data.is_unlocked;
     showToast(data.is_unlocked ? 'Module unlocked' : 'Module locked', 'success');
     await loadStudents(); renderStudents();
     loadStudentModules(userId);
-  } else { showToast('Error','error'); checkbox.checked = !checkbox.checked; }
+  } else { showToast('Error','error'); checkbox.checked = !desired; }
 }
 
 function viewStudentSubmissions(studentId, studentName) {
