@@ -155,6 +155,16 @@ async function initDB() {
       }
     }
 
+    // Ensure every student has a row for every module (backfill missing access rows)
+    await client.query(`
+      INSERT INTO student_module_access (user_id, module_id, is_unlocked)
+      SELECT u.id, m.id, FALSE
+      FROM users u
+      CROSS JOIN modules m
+      WHERE u.role = 'student'
+      ON CONFLICT (user_id, module_id) DO NOTHING
+    `);
+
     // Create a demo student account if it doesn't exist yet
     const demoCheck = await client.query("SELECT id FROM users WHERE email = 'demo@improve.com'");
     if (!demoCheck.rows.length) {
