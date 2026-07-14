@@ -155,14 +155,14 @@ async function initDB() {
       }
     }
 
-    // Ensure every student has a row for every module (backfill missing access rows)
+    // Ensure every student has a row for every module, all unlocked
     await client.query(`
       INSERT INTO student_module_access (user_id, module_id, is_unlocked)
-      SELECT u.id, m.id, FALSE
+      SELECT u.id, m.id, TRUE
       FROM users u
       CROSS JOIN modules m
       WHERE u.role = 'student'
-      ON CONFLICT (user_id, module_id) DO NOTHING
+      ON CONFLICT (user_id, module_id) DO UPDATE SET is_unlocked = TRUE
     `);
 
     // Create a demo student account if it doesn't exist yet
