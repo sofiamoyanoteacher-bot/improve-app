@@ -123,7 +123,9 @@ app.post('/api/profile/photo', requireAuth, uploadProfilePhoto.single('photo'), 
 app.get('/api/modules', requireAuth, async (req, res) => {
   try {
     const result = await pool.query('SELECT * FROM modules ORDER BY number');
-    res.json(result.rows);
+    // All modules unlocked for all users
+    const modules = result.rows.map(m => ({ ...m, is_unlocked: true }));
+    res.json(modules);
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
