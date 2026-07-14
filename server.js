@@ -44,6 +44,7 @@ const uploadModuleVideo = multer({ storage: moduleContentStorage, limits: { file
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.get('/api/version', (req, res) => res.json({ v: 'v20260714-unlock-all' }));
 app.use('/uploads', express.static('uploads'));
 app.use('/resources', express.static('resources'));
 app.use('/module-content', express.static('module-content'));
