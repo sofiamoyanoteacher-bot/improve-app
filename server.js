@@ -11,27 +11,33 @@ const { requireAuth, requireTeacher } = require('./middleware/auth');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Persistent storage base path — set STORAGE_PATH=/data via Railway Volume mount
+const STORAGE = process.env.STORAGE_PATH || '.';
+const DIRS = {
+  uploads: path.join(STORAGE, 'uploads'),
+  resources: path.join(STORAGE, 'resources'),
+  moduleContent: path.join(STORAGE, 'module-content'),
+  profiles: path.join(STORAGE, 'profiles'),
+};
+
 // Ensure upload directories exist
-['uploads', 'resources', 'module-content', 'profiles'].forEach(dir => {
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-});
+Object.values(DIRS).forEach(dir => { if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true }); });
 
 // Multer configs
 const submissionStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'uploads/'),
+  destination: (req, file, cb) => cb(null, DIRS.uploads),
   filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
 const resourceStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'resources/'),
+  destination: (req, file, cb) => cb(null, DIRS.resources),
   filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
 const moduleContentStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'module-content/'),
+  destination: (req, file, cb) => cb(null, DIRS.moduleContent),
   filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
-
 const profileStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, 'profiles/'),
+  destination: (req, file, cb) => cb(null, DIRS.profiles),
   filename: (req, file, cb) => cb(null, `${Date.now()}-${file.originalname}`),
 });
 const uploadVideo = multer({ storage: submissionStorage, limits: { fileSize: 500 * 1024 * 1024 } });
@@ -45,10 +51,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.get('/api/version', (req, res) => res.json({ v: 'v20260714-unlock-all' }));
-app.use('/uploads', express.static('uploads'));
-app.use('/resources', express.static('resources'));
-app.use('/module-content', express.static('module-content'));
-app.use('/profiles', express.static('profiles'));
+app.use('/uploads', express.static(DIRS.uploads));
+app.use('/resources', express.static(DIRS.resources));
+app.use('/module-content', express.static(DIRS.moduleContent));
+app.use('/profiles', express.static(DIRS.profiles));
 
 app.use(session({
   store: new pgSession({ pool, createTableIfMissing: true }),
@@ -183,7 +189,7 @@ app.delete('/api/submissions/:id', requireAuth, async (req, res) => {
       [req.params.id, req.session.userId]
     );
     if (!result.rows.length) return res.status(404).json({ error: 'Not found' });
-    fs.unlink(path.join('uploads', result.rows[0].filename), () => {});
+    fs.unlink(path.join(DIRS.uploads, result.rows[0].filename), () => {});
     res.json({ ok: true });
   } catch (e) {
     res.status(500).json({ error: e.message });
